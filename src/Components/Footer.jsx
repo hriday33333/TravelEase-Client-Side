@@ -1,0 +1,61 @@
+import React from "react";
+import logo from '../assets/logo3.png'
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+
+const Footer = () => {
+  return (
+    <footer className="bg-gray-900 text-gray-300 py-8 mt-12">
+      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+
+        {/* Website Info */}
+        <div className="mb-6 md:mb-0 text-center md:text-left">
+         <div className="md:flex items-center">
+           <img className='w-[100px]  mx-auto h-[100px] rounded-full' src={logo} alt="" />
+          <h1 className="text-2xl font-bold style-font text-white">TravelEase</h1>
+         </div>
+          <p className="text-sm mt-2">
+            &copy; {new Date().getFullYear()} TravelEase. All rights reserved.
+          </p>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex space-x-4">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-500 transition-colors"
+          >
+            <FaFacebookF size={20} />
+          </a>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-400 transition-colors"
+          >
+            <FaTwitter size={20} />
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-pink-500 transition-colors"
+          >
+            <FaInstagram size={20} />
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-600 transition-colors"
+          >
+            <FaLinkedinIn size={20} />
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
