@@ -1,6 +1,6 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import Swal from "sweetalert2";
+import { useState } from 'react';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdatePage = () => {
   const vehicle = useLoaderData(); // loader থেকে data
@@ -29,19 +29,19 @@ const UpdatePage = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
     fetch(`http://localhost:3000/models/${vehicle._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-          Swal.fire("Updated!", "✅ Vehicle updated successfully.", "success");
-          navigate("/myvehicles");
+          Swal.fire('Updated!', '✅ Vehicle updated successfully.', 'success');
+          navigate('/myvehicles');
         }
       })
       .catch(() => {
-        Swal.fire("Error!", "❌ Failed to update vehicle.", "error");
+        Swal.fire('Error!', '❌ Failed to update vehicle.', 'error');
       });
   };
 

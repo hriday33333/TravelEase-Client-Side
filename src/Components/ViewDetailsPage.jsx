@@ -1,11 +1,48 @@
 import { format } from 'date-fns';
 import { useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthContext';
 
 const ViewDetailsPage = () => {
   const data = useLoaderData();
+  const { user } = useContext(AuthContext);
 
-  // date-fns দিয়ে date formatting
   const formattedDate = format(new Date(data.createdAt), 'dd MMMM yyyy');
+
+  const handleBooking = () => {
+    if (!user) {
+      Swal.fire('Login Required', 'Please login to book this vehicle', 'warning');
+      return;
+    }
+
+    const bookingData = {
+      vehicleId: data._id,
+      vehicleName: data.vehicleName,
+      vehicleImage: data.coverImage,
+      category: data.category,
+      categories: data.categories,
+      location: data.location,
+      pricePerDay: data.pricePerDay,
+      userName: user.displayName || 'Anonymous',
+      userEmail: user.email,
+      status: 'Pending',
+      date: new Date().toISOString(),
+    };
+
+    fetch('http://localhost:3000/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(bookingData),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        Swal.fire('Success', '✅ Booking placed successfully!', 'success');
+      })
+      .catch(() => {
+        Swal.fire('Error', '❌ Failed to place booking.', 'error');
+      });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex justify-center items-start p-6 pt-12">
@@ -55,9 +92,12 @@ const ViewDetailsPage = () => {
           <p className="text-gray-600 leading-relaxed">{data.description}</p>
         </div>
 
-        {/* Button */}
+        {/* Book Now Button */}
         <div className="flex justify-center">
-          <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-md transition-transform transform hover:scale-105">
+          <button
+            onClick={handleBooking}
+            className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-md transition-transform transform hover:scale-105"
+          >
             Book Now
           </button>
         </div>
@@ -66,7 +106,7 @@ const ViewDetailsPage = () => {
   );
 };
 
-// ✅ Reusable InfoCard component
+// Reusable InfoCard
 const InfoCard = ({ label, value, valueColor = 'text-gray-800' }) => (
   <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 hover:shadow-md transition-shadow">
     <p className="text-gray-600">{label}</p>
