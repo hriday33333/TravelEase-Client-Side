@@ -72,7 +72,7 @@ const MyVehicles = () => {
               <div className="flex justify-between mt-4">
                 {/* View Details */}
                 <button
-                  onClick={() => navigate(`/vehicle/${vehicle._id}`)}
+                  onClick={() => navigate(`/viewdetailspage/${vehicle._id}`)}
                   className="bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded"
                 >
                   View
