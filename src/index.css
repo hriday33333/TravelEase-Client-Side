@@ -5,8 +5,12 @@
 @plugin "daisyui";
 
 
+
+a.active {
+  text-decoration: underline;
+}
+
 .style-font{
  font-family: "Sorts Mill Goudy", serif;
 
 }
-

@@ -7,6 +7,7 @@ const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Fetch user bookings
   useEffect(() => {
     if (user?.email) {
       fetch(`http://localhost:3000/bookings?email=${user.email}`)
@@ -21,6 +22,33 @@ const MyBookings = () => {
         });
     }
   }, [user]);
+
+  // ✅ Delete booking function
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this booking!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/bookings/${id}`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire('Deleted!', 'Your booking has been deleted.', 'success');
+              setBookings(bookings.filter((b) => b._id !== id));
+            }
+          })
+          .catch((err) => console.error('Delete error:', err));
+      }
+    });
+  };
 
   if (loading) {
     return (
@@ -53,6 +81,7 @@ const MyBookings = () => {
                   <th className="py-3 px-4 border-b">Price/Day</th>
                   <th className="py-3 px-4 border-b">Status</th>
                   <th className="py-3 px-4 border-b">Date</th>
+                  <th className="py-3 px-4 border-b text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -81,6 +110,14 @@ const MyBookings = () => {
                     <td className="py-3 px-4 border-b">
                       {new Date(booking.date).toLocaleDateString()}
                     </td>
+                    <td className="py-3 px-4 border-b text-center">
+                      <button
+                        onClick={() => handleDelete(booking._id)}
+                        className="btn btn-sm bg-red-500 hover:bg-red-600 text-white"
+                      >
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -107,9 +144,7 @@ const MyBookings = () => {
                     <p className="text-sm text-gray-500">{booking.category}</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-600">
-                  📍 {booking.location}
-                </p>
+                <p className="text-sm text-gray-600">📍 {booking.location}</p>
                 <p className="text-sm text-gray-600">
                   💰 ${booking.pricePerDay}/day
                 </p>
@@ -125,6 +160,13 @@ const MyBookings = () => {
                 <p className="text-xs text-gray-500 mt-1">
                   📅 {new Date(booking.date).toLocaleDateString()}
                 </p>
+
+                <button
+                  onClick={() => handleDelete(booking._id)}
+                  className="mt-3 w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold"
+                >
+                  Delete
+                </button>
               </div>
             ))}
           </div>
