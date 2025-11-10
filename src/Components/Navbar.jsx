@@ -1,9 +1,25 @@
+import { signOut } from 'firebase/auth';
 import { use } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import logo from '../assets/logo3.png';
 import { AuthContext } from '../Context/AuthContext';
+import { auth } from '../firebase/firebase.init';
 const Navbar = () => {
   const { user } = use(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        console.log('User signed out');
+        navigate('/login'); // লগআউটের পর login পেজে পাঠাবে
+      })
+      .catch((error) => {
+        console.error('Logout error:', error);
+      });
+
+    // console.log(user.photoURL);
+  };
 
   const links = (
     <>
@@ -16,7 +32,7 @@ const Navbar = () => {
       <li>
         <NavLink to="/addvehicle">Add Vehicle</NavLink>
       </li>
-      
+
       {user && (
         <>
           <li>
@@ -45,38 +61,61 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {' '}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{' '}
-            </svg>
+        <div className="dropdown dropdown-end">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost m-1 tooltip"
+            data-tip={user?.displayName || ''}
+          >
+            {user ? (
+              <img
+                className="w-[35px] rounded-full"
+                src={user.photoURL}
+                alt=""
+              />
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
           </div>
+
           <ul
-            tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[999] mt-3 w-52 p-2 shadow right-0 overflow-hidden"
           >
             {links}
           </ul>
         </div>
+
         <div className="space-x-2">
           {user ? (
-            <a className="bg-red-600 rounded-l-full p-1">Log out</a>
+            <button
+              onClick={handleLogout}
+              className="bg-red-600 rounded-l-full p-1"
+            >
+              Log out
+            </button>
           ) : (
             <>
-              <a className="bg-red-600 rounded-l-full p-1">Login</a>
-              <a className="bg-red-600 rounded-e-full p-1">Register</a>
+              <Link to="/login" className="bg-red-600 rounded-l-full p-1">
+                Login
+              </Link>
+              <Link to="/register" className="bg-red-600 rounded-e-full p-1">
+                Register
+              </Link>
             </>
           )}
         </div>
