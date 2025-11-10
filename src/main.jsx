@@ -7,6 +7,7 @@ import AllVehicles from './Components/AllVehicles.jsx';
 import Home from './Components/Home.jsx';
 import MyBookings from './Components/MyBookings.jsx';
 import MyVehicles from './Components/MyVehicles.jsx';
+import UpdatePage from './Components/UpdatePage.jsx';
 import ViewDetailsPage from './Components/ViewDetailsPage.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
 import './index.css';
@@ -40,11 +41,18 @@ const router = createBrowserRouter([
             <ViewDetailsPage></ViewDetailsPage>
           </PrivateRoute>
         ),
-        loader: ({params}) => fetch(`http://localhost:3000/models/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/models/${params.id}`),
       },
       {
         path: 'addvehicle',
         element: <AddVehicle></AddVehicle>,
+      },
+      {
+        path: '/update/:id',
+        element: <UpdatePage></UpdatePage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/models/${params.id}`),
       },
       {
         path: 'myvehicles',

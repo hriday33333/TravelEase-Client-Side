@@ -1,17 +1,21 @@
-import { useLoaderData } from "react-router";
+import { format } from 'date-fns';
+import { useLoaderData } from 'react-router';
 
 const ViewDetailsPage = () => {
   const data = useLoaderData();
 
+  // date-fns দিয়ে date formatting
+  const formattedDate = format(new Date(data.createdAt), 'dd MMMM yyyy');
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex justify-center items-center p-6">
-      <div className="max-w-3xl w-full bg-white/80 backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-blue-100">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex justify-center items-start p-6 pt-12">
+      <div className="max-w-3xl w-full bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-blue-100">
         {/* Vehicle Image */}
         <div className="w-full h-72 overflow-hidden rounded-xl shadow-md mb-6">
           <img
             src={data.coverImage}
             alt={data.vehicleName}
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            className="lg:w-full lg:h-full object-cover hover:scale-105 transition-transform duration-500"
           />
         </div>
 
@@ -25,43 +29,26 @@ const ViewDetailsPage = () => {
 
         {/* Vehicle Details Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-          <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
-            <p className="text-gray-600">Owner</p>
-            <h3 className="text-lg font-semibold text-gray-800">
-              {data.owner}
-            </h3>
-          </div>
-
-          <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
-            <p className="text-gray-600">Email</p>
-            <h3 className="text-lg font-semibold text-gray-800">
-              {data.userEmail}
-            </h3>
-          </div>
-
-          <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
-            <p className="text-gray-600">Availability</p>
-            <h3
-              className={`text-lg font-semibold ${
-                data.availability === "Available"
-                  ? "text-green-600"
-                  : "text-red-500"
-              }`}
-            >
-              {data.availability}
-            </h3>
-          </div>
-
-          <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
-            <p className="text-gray-600">Price Per Day</p>
-            <h3 className="text-lg font-semibold text-gray-800">
-              ${data.pricePerDay}
-            </h3>
-          </div>
+          <InfoCard label="Owner" value={data.owner} />
+          <InfoCard label="Email" value={data.userEmail} />
+          <InfoCard
+            label="Availability"
+            value={data.availability}
+            valueColor={
+              data.availability === 'Available'
+                ? 'text-green-600'
+                : 'text-red-500'
+            }
+          />
+          <InfoCard label="Price Per Day" value={`$${data.pricePerDay}`} />
+          <InfoCard label="Category" value={data.category} />
+          <InfoCard label="Categories" value={data.categories} />
+          <InfoCard label="Location" value={data.location} />
+          <InfoCard label="Added On" value={formattedDate} />
         </div>
 
         {/* Description */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 shadow-inner">
+        <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 shadow-inner mb-8">
           <h2 className="text-xl font-semibold text-gray-700 mb-2">
             Description
           </h2>
@@ -69,8 +56,8 @@ const ViewDetailsPage = () => {
         </div>
 
         {/* Button */}
-        <div className="mt-8 flex justify-center">
-          <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-md transition">
+        <div className="flex justify-center">
+          <button className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-md transition-transform transform hover:scale-105">
             Book Now
           </button>
         </div>
@@ -78,5 +65,13 @@ const ViewDetailsPage = () => {
     </div>
   );
 };
+
+// ✅ Reusable InfoCard component
+const InfoCard = ({ label, value, valueColor = 'text-gray-800' }) => (
+  <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 hover:shadow-md transition-shadow">
+    <p className="text-gray-600">{label}</p>
+    <h3 className={`text-lg font-semibold ${valueColor}`}>{value}</h3>
+  </div>
+);
 
 export default ViewDetailsPage;
