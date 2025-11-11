@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth';
-import { use } from 'react';
+import { use, useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router';
 import logo from '../assets/logo3.png';
 import { AuthContext } from '../Context/AuthContext';
@@ -7,6 +7,16 @@ import { auth } from '../firebase/firebase.init';
 const Navbar = () => {
   const { user } = use(AuthContext);
   const navigate = useNavigate();
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+  useEffect(() => {
+    const html = document.querySelector('html');
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const handleThem = (checked) => {
+  setTheme(checked?"dark":"light")
+  };
 
   const handleLogout = () => {
     signOut(auth)
@@ -97,6 +107,13 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[999] mt-3 w-52 p-2 shadow right-0 overflow-hidden font-semibold"
           >
             {links}
+            <h1>Theme</h1>
+            <input
+              onChange={(e) => handleThem(e.target.checked)}
+              type="checkbox"
+              defaultChecked={localStorage.getItem('theme') === 'dark'}
+              className="toggle"
+            />
           </ul>
         </div>
 

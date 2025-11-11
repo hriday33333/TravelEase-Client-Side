@@ -46,7 +46,7 @@ const Banner = () => {
               <img
                 src={img}
                 alt={`Slide ${index + 1}`}
-                className="w-full lg:h-[600px] object-cover brightness-50"
+                className="w-full lg:h-[500px] object-cover brightness-50"
               />
             </SwiperSlide>
           ))

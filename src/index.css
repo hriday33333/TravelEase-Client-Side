@@ -1,21 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap');
 
-
 @import 'tailwindcss';
-@plugin "daisyui";
-
-
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 /* Navbar link active হলে underline এবং red-600 রঙ */
 a.active {
-  text-decoration: underline;       /* underline যোগ করবে */
-  text-decoration-color: #dc2626;   /* underline color Tailwind red-600 এর মতো */
-  font-weight: bold;                 /* bold text */
+  text-decoration: underline; /* underline যোগ করবে */
+  text-decoration-color: #dc2626; /* underline color Tailwind red-600 এর মতো */
+  font-weight: bold; /* bold text */
 }
 
-
-
-.style-font{
- font-family: "Sorts Mill Goudy", serif;
-
+.style-font {
+  font-family: 'Sorts Mill Goudy', serif;
 }
