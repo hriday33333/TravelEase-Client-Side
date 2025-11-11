@@ -50,8 +50,8 @@ const MyVehicles = () => {
   };
 
   return (
-    <div className="container mx-auto p-6">
-      <h2 className="text-2xl font-bold text-center text-blue-600 mb-6">
+    <div className="container  mx-auto p-6">
+      <h2 className="text-2xl font-bold text-center text-red-600 mb-6">
         My Vehicles ({vehicles.length})
       </h2>
 
@@ -60,11 +60,11 @@ const MyVehicles = () => {
           You haven’t added any vehicles yet.
         </p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {vehicles.map((vehicle) => (
             <div
               key={vehicle._id}
-              className="border rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col"
+              className=" border rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col"
             >
               <img
                 src={vehicle.coverImage}
@@ -74,6 +74,7 @@ const MyVehicles = () => {
               <h3 className="text-xl font-semibold mb-2">
                 {vehicle.vehicleName}
               </h3>
+              <div className="divider divider-error"></div>
               <p className="text-gray-600 mb-1">Owner: {vehicle.owner}</p>
               <p className="text-gray-600 mb-1">Email: {vehicle.userEmail}</p>
               <p className="text-gray-600 mb-1">Category: {vehicle.category}</p>

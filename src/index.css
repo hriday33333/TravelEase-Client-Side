@@ -13,6 +13,6 @@ a.active {
   font-weight: bold; /* bold text */
 }
 
-.style-font {
+*{
   font-family: 'Sorts Mill Goudy', serif;
 }

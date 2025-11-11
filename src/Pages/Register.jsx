@@ -1,11 +1,11 @@
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/AuthContext";
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContext';
 
 const Register = () => {
   const { createUser, signInWithgoogle, user } = useContext(AuthContext);
-  const [nameError, setNamerror] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [nameError, setNamerror] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -19,10 +19,10 @@ const Register = () => {
 
     // Name validation
     if (name.length < 5) {
-      setNamerror("Name should be more than 5 characters");
+      setNamerror('Name should be more than 5 characters');
       return;
     } else {
-      setNamerror("");
+      setNamerror('');
     }
 
     // Password validation
@@ -30,16 +30,16 @@ const Register = () => {
     const hasLowercase = /[a-z]/.test(password);
 
     if (!hasUppercase) {
-      setPasswordError("Password must have at least one uppercase letter");
+      setPasswordError('Password must have at least one uppercase letter');
       return;
     } else if (!hasLowercase) {
-      setPasswordError("Password must have at least one lowercase letter");
+      setPasswordError('Password must have at least one lowercase letter');
       return;
     } else if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long");
+      setPasswordError('Password must be at least 6 characters long');
       return;
     } else {
-      setPasswordError("");
+      setPasswordError('');
     }
 
     setLoading(true);
@@ -50,7 +50,7 @@ const Register = () => {
         const user = result.user;
 
         // Update profile
-        import("firebase/auth").then(({ updateProfile }) => {
+        import('firebase/auth').then(({ updateProfile }) => {
           updateProfile(user, { displayName: name, photoURL: photo })
             .then(() => {
               // MongoDB এ save করা
@@ -60,16 +60,16 @@ const Register = () => {
                 image: photo,
               };
 
-              fetch("http://localhost:3000/users", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
+              fetch('http://localhost:3000/users', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(newUser),
               })
                 .then((res) => res.json())
                 .then((data) => {
-                  console.log("User saved in DB:", data);
+                  console.log('User saved in DB:', data);
                   setLoading(false);
-                  navigate("/"); // Registration successful → home
+                  navigate('/'); // Registration successful → home
                 })
                 .catch((err) => {
                   console.error(err);
@@ -98,15 +98,15 @@ const Register = () => {
         };
 
         // Google sign-in user save in MongoDB
-        fetch("http://localhost:3000/users", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
+        fetch('http://localhost:3000/users', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
           body: JSON.stringify(newUser),
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("Google user saved in DB:", data);
-            navigate("/"); // Redirect after Google sign-in
+            console.log('Google user saved in DB:', data);
+            navigate('/'); // Redirect after Google sign-in
           })
           .catch((err) => console.error(err));
       })
@@ -163,7 +163,7 @@ const Register = () => {
               )}
 
               <button className="btn btn-neutral mt-4" disabled={loading}>
-                {loading ? "Registering..." : "Register"}
+                {loading ? 'Registering...' : 'Register'}
               </button>
 
               {/* Google Sign In */}
@@ -172,15 +172,39 @@ const Register = () => {
                 onClick={handleGoogleSignIn}
                 className="btn bg-white text-black border-[#e5e5e5] mt-2"
               >
+                <svg
+                  aria-label="Google logo"
+                  width="16"
+                  height="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                >
+                  <g>
+                    <path d="m0 0H512V512H0" fill="#fff"></path>
+                    <path
+                      fill="#34a853"
+                      d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+                    ></path>
+                    <path
+                      fill="#4285f4"
+                      d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+                    ></path>
+                    <path
+                      fill="#fbbc02"
+                      d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
+                    ></path>
+                    <path
+                      fill="#ea4335"
+                      d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+                    ></path>
+                  </g>
+                </svg>
                 Continue with Google
               </button>
 
               <p className="font-semibold text-center pt-4">
-                Already Have an Account?{" "}
-                <Link
-                  to="/login"
-                  className="text-blue-400 hover:text-blue-700"
-                >
+                Already Have an Account?{' '}
+                <Link to="/login" className="text-blue-400 hover:text-blue-700">
                   Login
                 </Link>
               </p>

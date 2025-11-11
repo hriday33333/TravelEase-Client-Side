@@ -45,8 +45,8 @@ const ViewDetailsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex justify-center items-start p-6 pt-12">
-      <div className="max-w-3xl w-full bg-white/90 backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-blue-100">
+    <div className="min-h-screen  flex justify-center items-start p-6 pt-12">
+      <div className="max-w-3xl w-full  backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-blue-100">
         {/* Vehicle Image */}
         <div className="w-full h-72 overflow-hidden rounded-xl shadow-md mb-6">
           <img
@@ -57,7 +57,7 @@ const ViewDetailsPage = () => {
         </div>
 
         {/* Vehicle Title */}
-        <h1 className="text-3xl font-bold text-gray-800 mb-2 text-center">
+        <h1 className="text-3xl font-bold mb-2 text-center">
           {data.vehicleName}
         </h1>
         <p className="text-gray-500 text-center mb-6 italic">
@@ -85,11 +85,11 @@ const ViewDetailsPage = () => {
         </div>
 
         {/* Description */}
-        <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 shadow-inner mb-8">
-          <h2 className="text-xl font-semibold text-gray-700 mb-2">
+        <div className=" border border-gray-200 rounded-xl p-5 shadow-inner mb-8">
+          <h2 className="text-xl font-semibold  mb-2">
             Description
           </h2>
-          <p className="text-gray-600 leading-relaxed">{data.description}</p>
+          <p className=" leading-relaxed">{data.description}</p>
         </div>
 
         {/* Book Now Button */}
@@ -107,9 +107,9 @@ const ViewDetailsPage = () => {
 };
 
 // Reusable InfoCard
-const InfoCard = ({ label, value, valueColor = 'text-gray-800' }) => (
-  <div className="p-4 bg-blue-50 rounded-xl border border-blue-100 hover:shadow-md transition-shadow">
-    <p className="text-gray-600">{label}</p>
+const InfoCard = ({ label, value, valueColor = '' }) => (
+  <div className="p-4  rounded-xl border border-blue-100 hover:shadow-md transition-shadow">
+    <p className="">{label}</p>
     <h3 className={`text-lg font-semibold ${valueColor}`}>{value}</h3>
   </div>
 );

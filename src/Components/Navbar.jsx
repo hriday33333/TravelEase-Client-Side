@@ -6,6 +6,8 @@ import { AuthContext } from '../Context/AuthContext';
 import { auth } from '../firebase/firebase.init';
 const Navbar = () => {
   const { user } = use(AuthContext);
+
+
   const navigate = useNavigate();
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
   useEffect(() => {

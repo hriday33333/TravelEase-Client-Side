@@ -47,15 +47,13 @@ const AuthProvider = ({ children }) => {
     createUser,
     loginUser,
     signInWithgoogle,
-    logout,       // ✅ sign out ফাংশন যোগ করা হলো
+    logout, // ✅ sign out ফাংশন যোগ করা হলো
     user,
     loading,
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 

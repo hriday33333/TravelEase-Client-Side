@@ -60,21 +60,21 @@ const MyBookings = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-2xl font-bold text-center text-blue-600 mb-6">
+      <h2 className="text-2xl font-bold text-center text-red-600 mb-6">
         My Bookings ({bookings.length})
       </h2>
 
       {bookings.length === 0 ? (
-        <p className="text-center text-gray-500">
+        <p className="text-center ">
           You haven’t placed any bookings yet.
         </p>
       ) : (
         <>
           {/* ✅ Large Device - Table View */}
           <div className="hidden md:block overflow-x-auto">
-            <table className="min-w-full bg-white border rounded-lg shadow">
+            <table className="min-w-full  border rounded-lg shadow">
               <thead>
-                <tr className="bg-blue-100 text-left">
+                <tr className=" text-left">
                   <th className="py-3 px-4 border-b">Vehicle</th>
                   <th className="py-3 px-4 border-b">Category</th>
                   <th className="py-3 px-4 border-b">Location</th>
@@ -86,7 +86,7 @@ const MyBookings = () => {
               </thead>
               <tbody>
                 {bookings.map((booking) => (
-                  <tr key={booking._id} className="hover:bg-gray-50">
+                  <tr key={booking._id} className="">
                     <td className="py-3 px-4 border-b flex items-center gap-3">
                       <img
                         src={booking.vehicleImage}
@@ -129,7 +129,7 @@ const MyBookings = () => {
             {bookings.map((booking) => (
               <div
                 key={booking._id}
-                className="p-4 bg-white border rounded-xl shadow-md hover:shadow-lg transition"
+                className="p-4  border rounded-xl shadow-md hover:shadow-lg transition"
               >
                 <div className="flex items-center gap-4 mb-3">
                   <img
@@ -138,14 +138,14 @@ const MyBookings = () => {
                     className="w-20 h-20 rounded object-cover"
                   />
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800">
+                    <h3 className="text-lg font-semibold ">
                       {booking.vehicleName}
                     </h3>
-                    <p className="text-sm text-gray-500">{booking.category}</p>
+                    <p className="text-sm ">{booking.category}</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-600">📍 {booking.location}</p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm ">📍 {booking.location}</p>
+                <p className="text-sm ">
                   💰 ${booking.pricePerDay}/day
                 </p>
                 <p
@@ -157,7 +157,7 @@ const MyBookings = () => {
                 >
                   🟢 {booking.status || 'Pending'}
                 </p>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs  mt-1">
                   📅 {new Date(booking.date).toLocaleDateString()}
                 </p>
 

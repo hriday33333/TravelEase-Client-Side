@@ -1,19 +1,8 @@
 import { motion } from 'framer-motion';
-import bg2 from '../assets/bg2.png';
 
 const AboutTravelEase = () => {
   return (
-    <section
-      className="relative overflow-hidden py-20 px-6 md:px-16 lg:px-32 text-center text-white"
-      style={{
-        backgroundImage: `url(${bg2})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      {/* Overlay blur & gradient */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-
+    <section className="relative  mt-20 lg:mt-30 overflow-hidden py-20 px-6 md:px-16 lg:px-32 text-center">
       {/* Main motion wrapper for whole content */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -27,9 +16,9 @@ const AboutTravelEase = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-4xl md:text-5xl font-extrabold mb-6 text-red-500 drop-shadow-lg"
+          className="text-4xl md:text-5xl font-extrabold mb-6  drop-shadow-lg"
         >
-          About <span className="text-white">TravelEase</span>
+          <span className="text-red-600">About</span> TravelEase
         </motion.h1>
 
         {/* Paragraphs Animation */}
@@ -37,9 +26,9 @@ const AboutTravelEase = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-lg md:text-xl leading-relaxed text-gray-200"
+          className="text-lg md:text-xl leading-relaxed  "
         >
-          <span className="font-semibold text-red-400">TravelEase</span> is your
+          <span className="font-semibold text-red-500">TravelEase</span> is your
           ultimate vehicle booking & trip management platform. Whether you want
           to rent an SUV, explore electric rides, or plan your dream road trip,
           we make your journey simple, smooth, and enjoyable. 🚗✨
@@ -49,7 +38,7 @@ const AboutTravelEase = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-4 text-gray-300"
+          className="mt-4 "
         >
           With trusted hosts, verified vehicles, and seamless booking
           experience, TravelEase connects travelers and owners in a secure and

@@ -47,7 +47,7 @@ const UpdatePage = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-2xl font-bold text-blue-600 mb-6 text-center">
+      <h2 className="text-2xl font-bold text-red-600 mb-6 text-center">
         Update Vehicle
       </h2>
       <form onSubmit={handleUpdate} className="max-w-xl mx-auto space-y-4">

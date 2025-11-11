@@ -46,21 +46,37 @@ const router = createBrowserRouter([
       },
       {
         path: 'addvehicle',
-        element: <AddVehicle></AddVehicle>,
+        element: (
+          <PrivateRoute>
+            <AddVehicle></AddVehicle>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/update/:id',
-        element: <UpdatePage></UpdatePage>,
+        element: (
+          <PrivateRoute>
+            <UpdatePage></UpdatePage>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:3000/models/${params.id}`),
       },
       {
         path: 'myvehicles',
-        element: <MyVehicles></MyVehicles>,
+        element: (
+          <PrivateRoute>
+            <MyVehicles></MyVehicles>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/mybookings',
-        element: <MyBookings></MyBookings>,
+        element: (
+          <PrivateRoute>
+            <MyBookings></MyBookings>
+          </PrivateRoute>
+        ),
       },
       {
         path: 'login',

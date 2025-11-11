@@ -28,7 +28,7 @@ const HomeModelCard = () => {
   }
 
   return (
-    <div className="container mx-auto p-6 mt-20 lg:mt-40">
+    <div className="container mx-auto p-6  mt-20 lg:mt-30">
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}

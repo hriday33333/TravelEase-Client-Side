@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const TopCategories = () => {
   const [vehicles, setVehicles] = useState([]);
@@ -8,6 +10,11 @@ const TopCategories = () => {
       .then((res) => res.json())
       .then((data) => setVehicles(data))
       .catch((err) => console.error(err));
+  }, []);
+
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true, easing: "ease-out" });
   }, []);
 
   // Unique categories + image + description
@@ -23,13 +30,15 @@ const TopCategories = () => {
   });
 
   return (
-    <div className="container mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-4">Top Categories</h2>
-      <div className="flex flex-col gap-4">
+    <div className="container mx-auto  mt-20 lg:mt-30 p-6">
+      <h2 className="text-2xl text-center font-bold mb-4">Top Categories</h2>
+      {/* Grid layout */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {categoryData.map((cat, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-4 p-4 bg-blue-50 rounded-xl shadow hover:shadow-md transition"
+            className="flex items-center gap-4 p-4 rounded-xl shadow hover:shadow-md transition"
+            data-aos="fade-up" // AOS animation
           >
             {/* Image */}
             <img

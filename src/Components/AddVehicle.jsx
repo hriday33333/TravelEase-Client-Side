@@ -49,7 +49,7 @@ const AddVehicle = () => {
 
   return (
     <div
-      className="max-w-3xl mx-auto p-6 bg-white shadow rounded-lg mt-10"
+      className="max-w-3xl mx-auto p-6  shadow rounded-lg mt-10"
       data-aos="fade-up"
     >
       <h2
@@ -66,7 +66,7 @@ const AddVehicle = () => {
       >
         {/* Vehicle Name */}
         <div data-aos="fade-right">
-          <label className="block text-gray-700">Vehicle Name</label>
+          <label className="block ">Vehicle Name</label>
           <input
             type="text"
             name="vehicleName"
@@ -77,7 +77,7 @@ const AddVehicle = () => {
 
         {/* Owner Name */}
         <div data-aos="fade-left">
-          <label className="block text-gray-700">Owner Name</label>
+          <label className="block ">Owner Name</label>
           <input
             type="text"
             name="owner"
@@ -88,7 +88,7 @@ const AddVehicle = () => {
 
         {/* Category */}
         <div data-aos="fade-right">
-          <label className="block text-gray-700">Category</label>
+          <label className="block ">Category</label>
           <select
             name="category"
             className="select select-bordered w-full border-gray-300 rounded p-2"
@@ -105,7 +105,7 @@ const AddVehicle = () => {
 
         {/* Price Per Day */}
         <div data-aos="fade-left">
-          <label className="block text-gray-700">Price Per Day ($)</label>
+          <label className="block ">Price Per Day ($)</label>
           <input
             type="number"
             name="pricePerDay"
@@ -116,7 +116,7 @@ const AddVehicle = () => {
 
         {/* Location */}
         <div data-aos="fade-right">
-          <label className="block text-gray-700">Location</label>
+          <label className="block ">Location</label>
           <input
             type="text"
             name="location"
@@ -127,7 +127,7 @@ const AddVehicle = () => {
 
         {/* Availability */}
         <div data-aos="fade-left">
-          <label className="block text-gray-700">Availability</label>
+          <label className="block ">Availability</label>
           <select
             name="availability"
             className="select select-bordered w-full border-gray-300 rounded p-2"
@@ -139,7 +139,7 @@ const AddVehicle = () => {
 
         {/* Description */}
         <div className="md:col-span-2" data-aos="fade-up">
-          <label className="block text-gray-700">Description</label>
+          <label className="block ">Description</label>
           <textarea
             name="description"
             rows="3"
@@ -149,7 +149,7 @@ const AddVehicle = () => {
 
         {/* Cover Image */}
         <div className="md:col-span-2" data-aos="fade-up">
-          <label className="block text-gray-700">Cover Image URL</label>
+          <label className="block ">Cover Image URL</label>
           <input
             type="text"
             name="coverImage"
@@ -160,12 +160,12 @@ const AddVehicle = () => {
 
         {/* User Email */}
         <div className="md:col-span-2" data-aos="fade-up">
-          <label className="block text-gray-700">User Email</label>
+          <label className="block ">User Email</label>
           <input
             type="email"
             value={user?.email || ""}
             readOnly
-            className="input input-bordered w-full border-gray-300 rounded p-2 bg-gray-100"
+            className="input  input-bordered w-full border-gray-300 rounded p-2"
           />
         </div>
 
