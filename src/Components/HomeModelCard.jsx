@@ -34,7 +34,7 @@ const HomeModelCard = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-2xl font-bold text-blue-600 mb-6 text-center"
+        className="text-2xl font-bold text-red-600 mb-6 text-center"
       >
         Latest Vehicles
       </motion.h2>

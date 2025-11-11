@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 
 const Register = () => {
-  const { createUser, signInWithgoogle, user } = useContext(AuthContext);
+  const { createUser, signInWithgoogle } = useContext(AuthContext);
   const [nameError, setNamerror] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);

@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { useEffect, useState } from 'react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import { Link } from "react-router";
-import Tooltip from "./Tooltip";
+import { Link } from 'react-router';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import Tooltip from './Tooltip';
 
 const Banner = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/models")
+    fetch('http://localhost:3000/models')
       .then((res) => res.json())
       .then((data) => {
         // শুধু coverImage বের করা
@@ -61,11 +61,8 @@ const Banner = () => {
 
       {/* 🎯 Static Center Button */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-        <Link to="/allvehicles"
-
-        >
-
-        <Tooltip></Tooltip>
+        <Link to="/allvehicles">
+          <Tooltip></Tooltip>
         </Link>
       </div>
     </div>

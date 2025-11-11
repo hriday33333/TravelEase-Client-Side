@@ -4,6 +4,7 @@ import { createBrowserRouter } from 'react-router';
 import { RouterProvider } from 'react-router/dom';
 import AddVehicle from './Components/AddVehicle.jsx';
 import AllVehicles from './Components/AllVehicles.jsx';
+import ErrorPage from './Components/ErrorPage.jsx';
 import Home from './Components/Home.jsx';
 import MyBookings from './Components/MyBookings.jsx';
 import MyVehicles from './Components/MyVehicles.jsx';
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login></Login>,
+      },
+      {
+        path: '/*',
+        element: <ErrorPage></ErrorPage>,
       },
     ],
   },

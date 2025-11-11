@@ -31,7 +31,7 @@ const TopCategories = () => {
 
   return (
     <div className="container mx-auto  mt-20 lg:mt-30 p-6">
-      <h2 className="text-2xl text-center font-bold mb-4">Top Categories</h2>
+      <h2 className="text-2xl text-center text-red-600 font-bold mb-4">Top Categories</h2>
       {/* Grid layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {categoryData.map((cat, idx) => (
