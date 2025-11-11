@@ -113,7 +113,7 @@ const MyBookings = () => {
                     <td className="py-3 px-4 border-b text-center">
                       <button
                         onClick={() => handleDelete(booking._id)}
-                        className="btn btn-sm bg-red-500 hover:bg-red-600 text-white"
+                        className="btn btn-sm bg-red-600 text-black hover:bg-black hover:text-white transition duration-300 font-semibold shadow-md "
                       >
                         Delete
                       </button>
@@ -163,7 +163,7 @@ const MyBookings = () => {
 
                 <button
                   onClick={() => handleDelete(booking._id)}
-                  className="mt-3 w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold"
+                  className="mt-3 w-full bg-red-600 text-black  hover:bg-black hover:text-white transition duration-300 py-2 rounded-lg text-sm font-semibold"
                 >
                   Delete
                 </button>

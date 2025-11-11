@@ -57,7 +57,7 @@ const HomeModelCard = () => {
               </p>
               <Link
                 to={`/viewdetailspage/${vehicle._id}`}
-                className="mt-auto bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded text-center"
+                className="mt-auto bg-red-600 text-black  font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
               >
                 View Details
               </Link>

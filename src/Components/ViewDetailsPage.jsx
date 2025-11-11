@@ -96,7 +96,7 @@ const ViewDetailsPage = () => {
         <div className="flex justify-center">
           <button
             onClick={handleBooking}
-            className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-md transition-transform transform hover:scale-105"
+            className="px-8 py-3 bg-red-600 text-black  hover:bg-black hover:text-white transition duration-300 font-semibold rounded-full shadow-md  transform hover:scale-105"
           >
             Book Now
           </button>

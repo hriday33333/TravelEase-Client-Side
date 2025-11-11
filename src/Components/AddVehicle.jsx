@@ -146,7 +146,7 @@ const AddVehicle = () => {
 
         {/* Submit Button */}
         <div className="md:col-span-2 text-center mt-4">
-          <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg">
+          <button type="submit" className="bg-red-600 text-black hover:bg-black hover:text-white transition duration-300 font-semibold shadow-md py-2 px-6 rounded-lg">
             Add Vehicle
           </button>
         </div>
