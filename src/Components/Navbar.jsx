@@ -47,7 +47,7 @@ const Navbar = () => {
   );
   return (
     <div className="navbar bg-base-100 shadow ">
-      <div className="navbar-start ">
+      <div className="navbar-start  ">
         <img
           className="md:w-[80px] md:h-[80px] w-[60px] rounded-full"
           src={logo}
@@ -104,19 +104,25 @@ const Navbar = () => {
           {user ? (
             <button
               onClick={handleLogout}
-               className="bg-red-600 text-black lg:px-8 lg:py-3 rounded-full font-semibold shadow-md p-2
+              className="bg-red-600 text-black lg:px-8 lg:py-3 rounded-full font-semibold shadow-md p-2
                      hover:bg-black hover:text-white transition duration-300"
             >
               Log out
             </button>
           ) : (
             <>
-              <Link to="/login"  className="bg-red-600 text-black lg:px-8 lg:py-3 rounded-full font-semibold shadow-md p-2
-                     hover:bg-black hover:text-white transition duration-300">
+              <Link
+                to="/login"
+                className="bg-red-600 text-black lg:px-8 lg:py-3 rounded-full font-semibold shadow-md p-2
+                     hover:bg-black hover:text-white transition duration-300"
+              >
                 Login
               </Link>
-              <Link to="/register"  className="bg-red-600 text-black lg:px-8 lg:py-3 rounded-full font-semibold shadow-md p-2
-                     hover:bg-black hover:text-white transition duration-300">
+              <Link
+                to="/register"
+                className="bg-red-600 text-black lg:px-8 lg:py-3 rounded-full font-semibold shadow-md p-2
+                     hover:bg-black hover:text-white transition duration-300"
+              >
                 Register
               </Link>
             </>

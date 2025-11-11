@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { motion } from 'motion/react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const HomeModelCard = () => {
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // API থেকে ডেটা নিয়ে আসা
   useEffect(() => {
-    fetch("http://localhost:3000/sortmodels")
+    fetch('http://localhost:3000/sortmodels')
       .then((res) => res.json())
       .then((data) => {
         setVehicles(data);
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching vehicles:", err);
+        console.error('Error fetching vehicles:', err);
         setLoading(false);
       });
   }, []);
@@ -28,19 +28,29 @@ const HomeModelCard = () => {
   }
 
   return (
-    <div className="container mx-auto p-6 mt-20 lg:mt-40 ">
-      <h2 className="text-2xl font-bold text-blue-600 mb-6 text-center">
+    <div className="container mx-auto p-6 mt-20 lg:mt-40">
+      <motion.h2
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="text-2xl font-bold text-blue-600 mb-6 text-center"
+      >
         Latest Vehicles
-      </h2>
+      </motion.h2>
 
       {vehicles.length === 0 ? (
         <p className="text-center text-gray-500">No vehicles available.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {vehicles.map((vehicle) => (
-            <div
+          {vehicles.map((vehicle, index) => (
+            <motion.div
               key={vehicle._id}
-              className=" rounded-lg shadow-2xl hover:shadow-lg transition p-4 flex flex-col"
+              initial={{ opacity: 0, scale: 0.8, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="rounded-lg shadow-2xl hover:shadow-lg transition p-4 flex flex-col"
             >
               <img
                 src={vehicle.coverImage}
@@ -57,11 +67,11 @@ const HomeModelCard = () => {
               </p>
               <Link
                 to={`/viewdetailspage/${vehicle._id}`}
-                className="mt-auto bg-red-600 text-black  font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
+                className="mt-auto bg-red-600 text-black font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
               >
                 View Details
               </Link>
-            </div>
+            </motion.div>
           ))}
         </div>
       )}

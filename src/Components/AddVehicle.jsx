@@ -1,9 +1,19 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../Context/AuthContext";
- // তোমার AuthContext এর path অনুযায়ী ঠিক করো
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AddVehicle = () => {
   const { user } = useContext(AuthContext);
+
+  // 🔹 AOS Initialize
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-in-out",
+    });
+  }, []);
 
   const handleAddVehicle = (e) => {
     e.preventDefault();
@@ -18,11 +28,10 @@ const AddVehicle = () => {
       availability: form.availability.value,
       description: form.description.value,
       coverImage: form.coverImage.value,
-      userEmail: user?.email, // logged-in user email
+      userEmail: user?.email,
       createdAt: new Date().toISOString(),
     };
 
-    // send to backend
     fetch("http://localhost:3000/models", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -39,14 +48,24 @@ const AddVehicle = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow rounded-lg mt-10">
-      <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">
+    <div
+      className="max-w-3xl mx-auto p-6 bg-white shadow rounded-lg mt-10"
+      data-aos="fade-up"
+    >
+      <h2
+        className="text-2xl font-bold mb-6 text-center text-blue-600"
+        data-aos="zoom-in"
+      >
         Add New Vehicle
       </h2>
 
-      <form onSubmit={handleAddVehicle} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <form
+        onSubmit={handleAddVehicle}
+        className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        data-aos="fade-up"
+      >
         {/* Vehicle Name */}
-        <div>
+        <div data-aos="fade-right">
           <label className="block text-gray-700">Vehicle Name</label>
           <input
             type="text"
@@ -57,7 +76,7 @@ const AddVehicle = () => {
         </div>
 
         {/* Owner Name */}
-        <div>
+        <div data-aos="fade-left">
           <label className="block text-gray-700">Owner Name</label>
           <input
             type="text"
@@ -68,9 +87,12 @@ const AddVehicle = () => {
         </div>
 
         {/* Category */}
-        <div>
+        <div data-aos="fade-right">
           <label className="block text-gray-700">Category</label>
-          <select name="category" className="select select-bordered w-full border-gray-300 rounded p-2">
+          <select
+            name="category"
+            className="select select-bordered w-full border-gray-300 rounded p-2"
+          >
             <option>SUV</option>
             <option>Sedan</option>
             <option>Electric</option>
@@ -82,7 +104,7 @@ const AddVehicle = () => {
         </div>
 
         {/* Price Per Day */}
-        <div>
+        <div data-aos="fade-left">
           <label className="block text-gray-700">Price Per Day ($)</label>
           <input
             type="number"
@@ -93,7 +115,7 @@ const AddVehicle = () => {
         </div>
 
         {/* Location */}
-        <div>
+        <div data-aos="fade-right">
           <label className="block text-gray-700">Location</label>
           <input
             type="text"
@@ -104,16 +126,19 @@ const AddVehicle = () => {
         </div>
 
         {/* Availability */}
-        <div>
+        <div data-aos="fade-left">
           <label className="block text-gray-700">Availability</label>
-          <select name="availability" className="select select-bordered w-full border-gray-300 rounded p-2">
+          <select
+            name="availability"
+            className="select select-bordered w-full border-gray-300 rounded p-2"
+          >
             <option>Available</option>
             <option>Booked</option>
           </select>
         </div>
 
         {/* Description */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-2" data-aos="fade-up">
           <label className="block text-gray-700">Description</label>
           <textarea
             name="description"
@@ -123,7 +148,7 @@ const AddVehicle = () => {
         </div>
 
         {/* Cover Image */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-2" data-aos="fade-up">
           <label className="block text-gray-700">Cover Image URL</label>
           <input
             type="text"
@@ -133,8 +158,8 @@ const AddVehicle = () => {
           />
         </div>
 
-        {/* User Email (Read Only) */}
-        <div className="md:col-span-2">
+        {/* User Email */}
+        <div className="md:col-span-2" data-aos="fade-up">
           <label className="block text-gray-700">User Email</label>
           <input
             type="email"
@@ -145,8 +170,14 @@ const AddVehicle = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="md:col-span-2 text-center mt-4">
-          <button type="submit" className="bg-red-600 text-black hover:bg-black hover:text-white transition duration-300 font-semibold shadow-md py-2 px-6 rounded-lg">
+        <div
+          className="md:col-span-2 text-center mt-4"
+          data-aos="zoom-in-up"
+        >
+          <button
+            type="submit"
+            className="bg-red-600 text-black hover:bg-black hover:text-white transition duration-300 font-semibold shadow-md py-2 px-6 rounded-lg"
+          >
             Add Vehicle
           </button>
         </div>

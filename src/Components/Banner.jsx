@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { Link } from "react-router";
+import Tooltip from "./Tooltip";
 
 const Banner = () => {
   const [images, setImages] = useState([]);
@@ -45,7 +46,7 @@ const Banner = () => {
               <img
                 src={img}
                 alt={`Slide ${index + 1}`}
-                className="w-full lg:h-[400px] object-cover brightness-50"
+                className="w-full lg:h-[600px] object-cover brightness-50"
               />
             </SwiperSlide>
           ))
@@ -61,10 +62,10 @@ const Banner = () => {
       {/* 🎯 Static Center Button */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
         <Link to="/allvehicles"
-          className="bg-red-600 text-black px-8 py-3 rounded-full font-semibold shadow-md
-                     hover:bg-black hover:text-white transition duration-300"
+
         >
-          Click
+
+        <Tooltip></Tooltip>
         </Link>
       </div>
     </div>
