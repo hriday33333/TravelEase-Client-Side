@@ -24,7 +24,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative w-[90%] mx-auto my-10 rounded-xl overflow-hidden">
+    <div className="relative w-[90%] mx-auto my-10 rounded-xl overflow-hidden mt-20 lg:mt-32">
       {/* 🖼️ Swiper Slider */}
       <Swiper
         spaceBetween={50}

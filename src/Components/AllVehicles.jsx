@@ -84,11 +84,11 @@ const AllVehicles = () => {
       </div>
 
       {/* ---------- Vehicles Grid ---------- */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
         {vehicles.map((vehicle) => (
           <div
             key={vehicle._id}
-            className="border rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col"
+            className=" rounded-lg shadow-2xl hover:shadow-lg transition p-4 flex flex-col"
           >
             <img
               src={vehicle.coverImage}
@@ -105,7 +105,7 @@ const AllVehicles = () => {
             </p>
             <Link
               to={`/viewdetailspage/${vehicle._id}`}
-              className="mt-auto bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+              className="mt-auto bg-blue-500 hover:bg-blue-600 text-white text-center py-2 px-4 rounded"
             >
               View Details
             </Link>
