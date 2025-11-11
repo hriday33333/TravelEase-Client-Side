@@ -46,7 +46,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100  ">
+    <div className="navbar bg-base-100 shadow ">
       <div className="navbar-start ">
         <img
           className="md:w-[80px] md:h-[80px] w-[60px] rounded-full"
@@ -58,7 +58,7 @@ const Navbar = () => {
         </h1>
       </div>
       <div className="navbar-center  hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal font-semibold px-1">{links}</ul>
       </div>
       <div className="navbar-end">
         <div className="dropdown dropdown-end">
@@ -94,7 +94,7 @@ const Navbar = () => {
 
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[999] mt-3 w-52 p-2 shadow right-0 overflow-hidden"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[999] mt-3 w-52 p-2 shadow right-0 overflow-hidden font-semibold"
           >
             {links}
           </ul>
@@ -104,16 +104,19 @@ const Navbar = () => {
           {user ? (
             <button
               onClick={handleLogout}
-              className="bg-red-600 rounded-l-full p-1"
+               className="bg-red-600 text-black lg:px-8 lg:py-3 rounded-full font-semibold shadow-md p-2
+                     hover:bg-black hover:text-white transition duration-300"
             >
               Log out
             </button>
           ) : (
             <>
-              <Link to="/login" className="bg-red-600 rounded-l-full p-1">
+              <Link to="/login"  className="bg-red-600 text-black lg:px-8 lg:py-3 rounded-full font-semibold shadow-md p-2
+                     hover:bg-black hover:text-white transition duration-300">
                 Login
               </Link>
-              <Link to="/register" className="bg-red-600 rounded-e-full p-1">
+              <Link to="/register"  className="bg-red-600 text-black lg:px-8 lg:py-3 rounded-full font-semibold shadow-md p-2
+                     hover:bg-black hover:text-white transition duration-300">
                 Register
               </Link>
             </>

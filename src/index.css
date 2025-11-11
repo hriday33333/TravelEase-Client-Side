@@ -6,9 +6,14 @@
 
 
 
+/* Navbar link active হলে underline এবং red-600 রঙ */
 a.active {
-  text-decoration: underline;
+  text-decoration: underline;       /* underline যোগ করবে */
+  text-decoration-color: #dc2626;   /* underline color Tailwind red-600 এর মতো */
+  font-weight: bold;                 /* bold text */
 }
+
+
 
 .style-font{
  font-family: "Sorts Mill Goudy", serif;
