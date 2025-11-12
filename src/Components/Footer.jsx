@@ -1,4 +1,4 @@
-import { FaFacebookF, FaLinkedinIn, FaXTwitter } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { FaSquareXTwitter } from 'react-icons/fa6';
 import logo from '../assets/logo3.png';
 
@@ -37,7 +37,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="hover:text-blue-400 transition-colors"
           >
-            <FaXTwitter size={20} />
+            <FaSquareXTwitter size={20} />
           </a>
           <a
             href="https://instagram.com"
@@ -45,7 +45,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition-colors "
           >
-            <FaSquareXTwitter size={20} />
+            <FaInstagram size={20} />
           </a>
           <a
             href="https://linkedin.com"

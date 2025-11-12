@@ -36,7 +36,7 @@ const HomeModelCard = () => {
         viewport={{ once: true }}
         className="text-2xl font-bold text-red-600 mb-6 text-center"
       >
-        Latest Vehicles
+        Latest Vehicless
       </motion.h2>
 
       {vehicles.length === 0 ? (
