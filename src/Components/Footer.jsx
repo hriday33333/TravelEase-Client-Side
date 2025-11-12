@@ -1,9 +1,5 @@
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaTwitter,
-} from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaXTwitter } from 'react-icons/fa';
+import { FaSquareXTwitter } from 'react-icons/fa6';
 import logo from '../assets/logo3.png';
 
 const Footer = () => {
@@ -18,9 +14,7 @@ const Footer = () => {
               src={logo}
               alt=""
             />
-            <h1 className="text-2xl font-bold style-font ">
-              TravelEase
-            </h1>
+            <h1 className="text-2xl font-bold style-font ">TravelEase</h1>
           </div>
           <p className="text-sm  mt-2">
             &copy; {new Date().getFullYear()} TravelEase. All rights reserved.
@@ -41,9 +35,9 @@ const Footer = () => {
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-400 transition-colors "
+            className="hover:text-blue-400 transition-colors"
           >
-            <FaTwitter size={20} />
+            <FaXTwitter size={20} />
           </a>
           <a
             href="https://instagram.com"
@@ -51,7 +45,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition-colors "
           >
-            <FaInstagram size={20} />
+            <FaSquareXTwitter size={20} />
           </a>
           <a
             href="https://linkedin.com"
