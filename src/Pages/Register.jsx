@@ -1,12 +1,14 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // 👈 added for password toggle
 
 const Register = () => {
   const { createUser, signInWithgoogle } = useContext(AuthContext);
   const [nameError, setNamerror] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // 👈 added
   const navigate = useNavigate();
 
   const handleSingUp = (e) => {
@@ -124,7 +126,7 @@ const Register = () => {
               <input
                 name="name"
                 type="text"
-                className="input"
+                className="input w-full "
                 placeholder="Your Name"
                 required
               />
@@ -134,7 +136,7 @@ const Register = () => {
               <input
                 name="Photo"
                 type="text"
-                className="input"
+                className="input w-full "
                 placeholder="Photo URL"
                 required
               />
@@ -143,21 +145,31 @@ const Register = () => {
               <input
                 name="email"
                 type="email"
-                className="input"
+                className="input w-full "
                 placeholder="Email"
                 required
               />
 
               <label className="label">Password</label>
+
+              {/* 👇 Password input with eye toggle */}
               <div className="relative">
                 <input
                   name="password"
-                  type="password"
-                  className="input pr-10"
+                  type={showPassword ? "text" : "password"}
+                  className="input w-full pr-10"
                   placeholder="Password"
                   required
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-3 text-gray-500"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
               </div>
+
               {passwordError && (
                 <p className="text-xs text-error">{passwordError}</p>
               )}

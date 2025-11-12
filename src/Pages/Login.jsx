@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // 👈 eye icons import
 
 const Login = () => {
   const { loginUser, signInWithgoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // 👈 for toggling password visibility
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/"; // redirect after login
@@ -56,27 +58,36 @@ const Login = () => {
               <input
                 name="email"
                 type="email"
-                className="input"
+                className="input w-full"
                 placeholder="Email"
                 required
               />
 
               <label className="label">Password</label>
-              <input
-                name="password"
-                type="password"
-                className="input"
-                placeholder="Password"
-                required
-              />
+
+              {/* 👇 Password field with eye icon */}
+              <div className="relative">
+                <input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  className="input w-full pr-10"
+                  placeholder="Password"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-3 text-gray-500"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
 
-              <button
-                className="btn btn-neutral mt-4"
-                disabled={loading}
-              >
+              <button className="btn btn-neutral mt-4" disabled={loading}>
                 {loading ? "Logging in..." : "Login"}
               </button>
 
