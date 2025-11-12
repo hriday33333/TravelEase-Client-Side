@@ -4,7 +4,7 @@ const Tooltip = () => {
   return (
     <StyledWrapper>
       <div className="tooltip-wrapper">
-        <button className="hover-me">Hover me! 🎈</button>
+        <button className="hover-me">All Vehicles! 🎈</button>
         <div className="tooltip">
           <span className="star">⭐</span>
           <span className="star">⭐</span>

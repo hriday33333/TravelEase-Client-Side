@@ -1,5 +1,6 @@
 import AboutTravelEase from './AboutTravelEase';
 import Banner from './Banner';
+import BookingSection from './BookingSection';
 
 import HomeModelCard from './HomeModelCard';
 
@@ -11,6 +12,7 @@ const Home = () => {
       <Banner></Banner>
       <HomeModelCard></HomeModelCard>
       <TopCategories></TopCategories>
+      <BookingSection></BookingSection>
       <AboutTravelEase></AboutTravelEase>
     </div>
   );

@@ -53,7 +53,7 @@ const AddVehicle = () => {
       data-aos="fade-up"
     >
       <h2
-        className="text-2xl font-bold mb-6 text-center text-blue-600"
+        className="text-2xl font-bold mb-6 text-center text-red-600"
         data-aos="zoom-in"
       >
         Add New Vehicle

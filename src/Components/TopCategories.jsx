@@ -39,7 +39,7 @@ const TopCategories = () => {
         {categoryData.map((cat, idx) => (
           <div
             key={idx}
-            className="flex items-center gap-4 p-4 rounded-xl shadow hover:shadow-md transition"
+            className="flex items-center gap-4 p-4 rounded-xl shadow hover:shadow-md transition border-b border-l"
             data-aos="fade-up" // AOS animation
           >
             {/* Image */}

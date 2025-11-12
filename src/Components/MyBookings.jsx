@@ -171,7 +171,7 @@ const MyBookings = () => {
                 <p className="text-sm ">📍 {booking.location}</p>
                 <p className="text-sm ">💰 ${booking.pricePerDay}/day</p>
                 <p
-                  className={`text-sm font-semibold ${
+                  className={`text-sm  font-semibold ${
                     booking.status === 'Confirmed'
                       ? 'text-green-600'
                       : 'text-yellow-600'
@@ -179,7 +179,7 @@ const MyBookings = () => {
                 >
                   🟢 {booking.status || 'Pending'}
                 </p>
-                <p className="text-xs mt-1">
+                <p className="btn h-5 btn-dash btn-error text-xs mt-1">
                   📅 {new Date(booking.date).toLocaleDateString()}
                 </p>
 

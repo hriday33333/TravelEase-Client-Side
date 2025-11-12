@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const UpdatePage = () => {
   const vehicle = useLoaderData(); // loader থেকে data
   const navigate = useNavigate();
+
+  // 👇 AOS init
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+    });
+  }, []);
 
   // Form state initialize
   const [formData, setFormData] = useState({
@@ -47,10 +58,10 @@ const UpdatePage = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-2xl font-bold text-red-600 mb-6 text-center">
+      <h2 className="text-2xl font-bold text-red-600 mb-6 text-center" data-aos="fade-down">
         Update Vehicle
       </h2>
-      <form onSubmit={handleUpdate} className="max-w-xl mx-auto space-y-4">
+      <form onSubmit={handleUpdate} className="max-w-xl mx-auto space-y-4" data-aos="fade-up">
         <input
           type="text"
           name="vehicleName"
@@ -125,7 +136,7 @@ const UpdatePage = () => {
         />
         <button
           type="submit"
-          className="mt-auto bg-red-600 text-black  font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center w-full"
+          className="mt-auto bg-red-600 text-black font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center w-full"
         >
           Update Vehicle
         </button>

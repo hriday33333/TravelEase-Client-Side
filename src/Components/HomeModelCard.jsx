@@ -36,7 +36,7 @@ const HomeModelCard = () => {
         viewport={{ once: true }}
         className="text-2xl font-bold text-red-600 mb-6 text-center"
       >
-        Latest Vehicless
+        Latest Vehicles
       </motion.h2>
 
       {vehicles.length === 0 ? (
@@ -50,7 +50,7 @@ const HomeModelCard = () => {
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="rounded-lg shadow-2xl hover:shadow-lg transition p-4 flex flex-col"
+              className="rounded-lg shadow-2xl hover:shadow-lg transition p-4 flex flex-col border-b border-l"
             >
               <img
                 src={vehicle.coverImage}
@@ -60,10 +60,17 @@ const HomeModelCard = () => {
               <h3 className="text-xl font-semibold mb-2">
                 {vehicle.vehicleName}
               </h3>
-              <p className="text-gray-600 mb-1">Category: {vehicle.category}</p>
-              <p className="text-gray-600 mb-1">Location: {vehicle.location}</p>
-              <p className="text-gray-600 mb-1">
-                Price/Day: ${vehicle.pricePerDay}
+              <p className=" mb-1">
+                <span className="btn h-5 btn-dash btn-error">Category:</span> :-
+                {vehicle.category}
+              </p>
+              <p className=" mb-1">
+                <span className="btn h-5 btn-dash btn-error">Location:</span> :-
+                {vehicle.location}
+              </p>
+              <p className=" mb-1">
+                <span className="btn h-5 btn-dash btn-error">Price/Day: $</span>
+                :-{vehicle.pricePerDay}
               </p>
               <Link
                 to={`/viewdetailspage/${vehicle._id}`}

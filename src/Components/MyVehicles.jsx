@@ -1,3 +1,5 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; // ✅ SweetAlert2 import
@@ -7,6 +9,15 @@ const MyVehicles = () => {
   const { user } = useContext(AuthContext);
   const [vehicles, setVehicles] = useState([]);
   const navigate = useNavigate();
+
+  // 👇 AOS init
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+    });
+  }, []);
 
   // Fetch vehicles added by logged-in user
   useEffect(() => {
@@ -54,21 +65,25 @@ const MyVehicles = () => {
   };
 
   return (
-    <div className="container  mx-auto p-6">
-      <h2 className="text-2xl font-bold text-center text-red-600 mb-6">
+    <div className="container mx-auto p-6">
+      <h2
+        className="text-2xl font-bold text-center text-red-600 mb-6"
+        data-aos="fade-down"
+      >
         My Vehicles ({vehicles.length})
       </h2>
 
       {vehicles.length === 0 ? (
-        <p className="text-center text-gray-500">
+        <p className="text-center text-gray-500" data-aos="fade-up">
           You haven’t added any vehicles yet.
         </p>
       ) : (
-        <div className="  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {vehicles.map((vehicle) => (
             <div
               key={vehicle._id}
-              className=" border rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col"
+              className=" rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col border-b border-l"
+              data-aos="fade-up"
             >
               <img
                 src={vehicle.coverImage}
@@ -79,15 +94,26 @@ const MyVehicles = () => {
                 {vehicle.vehicleName}
               </h3>
               <div className="divider divider-error"></div>
-              <p className="text-gray-600 mb-1">Owner: {vehicle.owner}</p>
-              <p className="text-gray-600 mb-1">Email: {vehicle.userEmail}</p>
-              <p className="text-gray-600 mb-1">Category: {vehicle.category}</p>
-              <p className="text-gray-600 mb-1">
-                Categories: {vehicle.categories}
+              <p className=" mb-1">
+                <span className="btn h-5 btn-dash btn-error">Owner:</span>{' '}
+                {vehicle.owner}
               </p>
-              <p className="text-gray-600 mb-1">Location: {vehicle.location}</p>
-              <p className="text-gray-600 mb-1">
-                Price/Day: ${vehicle.pricePerDay}
+              <p className=" mb-1">
+                <span className="btn h-5 btn-dash btn-error">Email:</span>{' '}
+                {vehicle.userEmail}
+              </p>
+              <p className=" mb-1">
+                <span className="btn h-5 btn-dash btn-error">Category:</span>{' '}
+                {vehicle.category}
+              </p>
+
+              <p className=" mb-1">
+                <span className="btn h-5 btn-dash btn-error">Location:</span>{' '}
+                {vehicle.location}
+              </p>
+              <p className=" mb-1">
+                <span className="btn h-5 btn-dash btn-error">Price/Day:</span> $
+                {vehicle.pricePerDay}
               </p>
               <p
                 className={`font-medium ${
@@ -98,7 +124,7 @@ const MyVehicles = () => {
               >
                 {vehicle.availability}
               </p>
-              <p className="text-gray-500 text-sm mt-2 italic">
+              <p className=" text-sm mt-2 italic">
                 Added on:{' '}
                 {new Date(vehicle.createdAt).toLocaleDateString('en-GB', {
                   day: 'numeric',
@@ -106,25 +132,25 @@ const MyVehicles = () => {
                   year: 'numeric',
                 })}
               </p>
-              <p className="text-gray-700 mt-2">{vehicle.description}</p>
+
 
               <div className="flex justify-between mt-4">
                 <button
                   onClick={() => navigate(`/viewdetailspage/${vehicle._id}`)}
-                  className="mt-auto bg-red-600 text-black  font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
+                  className="mt-auto  bg-red-600 text-black font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
                 >
                   View
                 </button>
                 <button
                   onClick={() => navigate(`/update/${vehicle._id}`)}
-                  className="mt-auto bg-red-600 text-black  font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
+                  className="mt-auto bg-red-600 text-black font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
                 >
                   Update
                 </button>
 
                 <button
                   onClick={() => handleDelete(vehicle._id)}
-                  className="mt-auto bg-red-600 text-black  font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
+                  className="mt-auto bg-red-600 text-black font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
                 >
                   Delete
                 </button>

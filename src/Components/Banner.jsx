@@ -1,17 +1,26 @@
 import { useEffect, useState } from 'react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import { Link } from 'react-router';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Tooltip from './Tooltip';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Banner = () => {
   const [images, setImages] = useState([]);
+
+  // 👇 AOS init
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+    });
+  }, []);
 
   useEffect(() => {
     fetch('https://travelease-server-side.vercel.app/models')
@@ -25,7 +34,10 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative w-[90%] mx-auto my-10 rounded-xl overflow-hidden mt-20 lg:mt-32">
+    <div
+      className="relative w-[90%] mx-auto my-10 rounded-xl overflow-hidden mt-20 lg:mt-32"
+      data-aos="fade-up" // 👈 AOS animation
+    >
       {/* 🖼️ Swiper Slider */}
       <Swiper
         spaceBetween={50}
@@ -60,7 +72,7 @@ const Banner = () => {
       </Swiper>
 
       {/* 🎯 Static Center Button */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50" data-aos="zoom-in">
         <Link to="/allvehicles">
           <Tooltip></Tooltip>
         </Link>
