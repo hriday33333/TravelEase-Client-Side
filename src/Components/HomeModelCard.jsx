@@ -7,7 +7,7 @@ const HomeModelCard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/sortmodels')
+    fetch('https://travelease-server-side.vercel.app/sortmodels')
       .then((res) => res.json())
       .then((data) => {
         setVehicles(data);

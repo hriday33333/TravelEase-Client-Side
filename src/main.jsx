@@ -29,7 +29,8 @@ const router = createBrowserRouter([
       {
         path: '/allvehicles',
         element: <AllVehicles></AllVehicles>,
-        loader: () => fetch('http://localhost:3000/vehicles'),
+        loader: () =>
+          fetch('https://travelease-server-side.vercel.app/vehicles'),
       },
       {
         path: 'register',
@@ -43,7 +44,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/models/${params.id}`),
+          fetch(
+            `https://travelease-server-side.vercel.app/models/${params.id}`
+          ),
       },
       {
         path: 'addvehicle',
@@ -61,7 +64,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/models/${params.id}`),
+          fetch(
+            `https://travelease-server-side.vercel.app/models/${params.id}`
+          ),
       },
       {
         path: 'myvehicles',

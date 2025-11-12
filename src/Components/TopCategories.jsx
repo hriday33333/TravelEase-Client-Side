@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect, useState } from 'react';
 
 const TopCategories = () => {
   const [vehicles, setVehicles] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/models")
+    fetch('https://travelease-server-side.vercel.app/models')
       .then((res) => res.json())
       .then((data) => setVehicles(data))
       .catch((err) => console.error(err));
@@ -14,7 +14,7 @@ const TopCategories = () => {
 
   // Initialize AOS
   useEffect(() => {
-    AOS.init({ duration: 800, once: true, easing: "ease-out" });
+    AOS.init({ duration: 800, once: true, easing: 'ease-out' });
   }, []);
 
   // Unique categories + image + description
@@ -31,7 +31,9 @@ const TopCategories = () => {
 
   return (
     <div className="container mx-auto  mt-20 lg:mt-30 p-6">
-      <h2 className="text-2xl text-center text-red-600 font-bold mb-4">Top Categories</h2>
+      <h2 className="text-2xl text-center text-red-600 font-bold mb-4">
+        Top Categories
+      </h2>
       {/* Grid layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {categoryData.map((cat, idx) => (

@@ -1,7 +1,7 @@
-import { useContext, useEffect } from "react";
-import { AuthContext } from "../Context/AuthContext";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useContext, useEffect } from 'react';
+import { AuthContext } from '../Context/AuthContext';
 
 const AddVehicle = () => {
   const { user } = useContext(AuthContext);
@@ -11,7 +11,7 @@ const AddVehicle = () => {
     AOS.init({
       duration: 1000,
       once: true,
-      easing: "ease-in-out",
+      easing: 'ease-in-out',
     });
   }, []);
 
@@ -32,15 +32,15 @@ const AddVehicle = () => {
       createdAt: new Date().toISOString(),
     };
 
-    fetch("http://localhost:3000/models", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
+    fetch('https://travelease-server-side.vercel.app/models', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newVehicle),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("✅ Vehicle Added Successfully!");
+          alert('✅ Vehicle Added Successfully!');
           form.reset();
         }
       })
@@ -163,17 +163,14 @@ const AddVehicle = () => {
           <label className="block ">User Email</label>
           <input
             type="email"
-            value={user?.email || ""}
+            value={user?.email || ''}
             readOnly
             className="input  input-bordered w-full border-gray-300 rounded p-2"
           />
         </div>
 
         {/* Submit Button */}
-        <div
-          className="md:col-span-2 text-center mt-4"
-          data-aos="zoom-in-up"
-        >
+        <div className="md:col-span-2 text-center mt-4" data-aos="zoom-in-up">
           <button
             type="submit"
             className="bg-red-600 text-black hover:bg-black hover:text-white transition duration-300 font-semibold shadow-md py-2 px-6 rounded-lg"

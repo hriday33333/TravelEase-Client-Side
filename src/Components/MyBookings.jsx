@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Context/AuthContext';
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
@@ -10,7 +10,9 @@ const MyBookings = () => {
   // Fetch user bookings
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/bookings?email=${user.email}`)
+      fetch(
+        `https://travelease-server-side.vercel.app/bookings?email=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setBookings(data);
@@ -35,13 +37,17 @@ const MyBookings = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/bookings/${id}`, {
+        fetch(`https://travelease-server-side.vercel.app/bookings/${id}`, {
           method: 'DELETE',
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              Swal.fire('Deleted!', 'Your booking has been deleted.', 'success');
+              Swal.fire(
+                'Deleted!',
+                'Your booking has been deleted.',
+                'success'
+              );
               setBookings(bookings.filter((b) => b._id !== id));
             }
           })
@@ -65,9 +71,7 @@ const MyBookings = () => {
       </h2>
 
       {bookings.length === 0 ? (
-        <p className="text-center ">
-          You haven’t placed any bookings yet.
-        </p>
+        <p className="text-center ">You haven’t placed any bookings yet.</p>
       ) : (
         <>
           {/* ✅ Large Device - Table View */}
@@ -97,7 +101,9 @@ const MyBookings = () => {
                     </td>
                     <td className="py-3 px-4 border-b">{booking.category}</td>
                     <td className="py-3 px-4 border-b">{booking.location}</td>
-                    <td className="py-3 px-4 border-b">${booking.pricePerDay}</td>
+                    <td className="py-3 px-4 border-b">
+                      ${booking.pricePerDay}
+                    </td>
                     <td
                       className={`py-3 px-4 border-b font-semibold ${
                         booking.status === 'Confirmed'
@@ -145,9 +151,7 @@ const MyBookings = () => {
                   </div>
                 </div>
                 <p className="text-sm ">📍 {booking.location}</p>
-                <p className="text-sm ">
-                  💰 ${booking.pricePerDay}/day
-                </p>
+                <p className="text-sm ">💰 ${booking.pricePerDay}/day</p>
                 <p
                   className={`text-sm font-semibold ${
                     booking.status === 'Confirmed'

@@ -60,7 +60,7 @@ const Register = () => {
                 image: photo,
               };
 
-              fetch('http://localhost:3000/users', {
+              fetch('https://travelease-server-side.vercel.app/users', {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(newUser),
@@ -98,7 +98,7 @@ const Register = () => {
         };
 
         // Google sign-in user save in MongoDB
-        fetch('http://localhost:3000/users', {
+        fetch('https://travelease-server-side.vercel.app/users', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify(newUser),

@@ -14,7 +14,7 @@ const Banner = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/models')
+    fetch('https://travelease-server-side.vercel.app/models')
       .then((res) => res.json())
       .then((data) => {
         // শুধু coverImage বের করা

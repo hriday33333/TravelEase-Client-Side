@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
+import { useContext } from 'react';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
-import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 
 const ViewDetailsPage = () => {
@@ -12,7 +12,11 @@ const ViewDetailsPage = () => {
 
   const handleBooking = () => {
     if (!user) {
-      Swal.fire('Login Required', 'Please login to book this vehicle', 'warning');
+      Swal.fire(
+        'Login Required',
+        'Please login to book this vehicle',
+        'warning'
+      );
       return;
     }
 
@@ -30,7 +34,7 @@ const ViewDetailsPage = () => {
       date: new Date().toISOString(),
     };
 
-    fetch('http://localhost:3000/bookings', {
+    fetch('https://travelease-server-side.vercel.app/bookings', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(bookingData),
@@ -86,9 +90,7 @@ const ViewDetailsPage = () => {
 
         {/* Description */}
         <div className=" border border-gray-200 rounded-xl p-5 shadow-inner mb-8">
-          <h2 className="text-xl font-semibold  mb-2">
-            Description
-          </h2>
+          <h2 className="text-xl font-semibold  mb-2">Description</h2>
           <p className=" leading-relaxed">{data.description}</p>
         </div>
 

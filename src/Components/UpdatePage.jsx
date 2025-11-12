@@ -28,7 +28,7 @@ const UpdatePage = () => {
   // Handle form submit
   const handleUpdate = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/models/${vehicle._id}`, {
+    fetch(`https://travelease-server-side.vercel.app/models/${vehicle._id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
@@ -123,7 +123,10 @@ const UpdatePage = () => {
           placeholder="Cover Image URL"
           className="input input-bordered w-full"
         />
-        <button type="submit" className="mt-auto bg-red-600 text-black  font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center w-full">
+        <button
+          type="submit"
+          className="mt-auto bg-red-600 text-black  font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center w-full"
+        >
           Update Vehicle
         </button>
       </form>

@@ -11,7 +11,9 @@ const MyVehicles = () => {
   // Fetch vehicles added by logged-in user
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/models?email=${user.email}`)
+      fetch(
+        `https://travelease-server-side.vercel.app/models?email=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => setVehicles(data))
         .catch((err) => console.error(err));
@@ -30,7 +32,9 @@ const MyVehicles = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/models/${id}`, { method: 'DELETE' })
+        fetch(`https://travelease-server-side.vercel.app/models/${id}`, {
+          method: 'DELETE',
+        })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
