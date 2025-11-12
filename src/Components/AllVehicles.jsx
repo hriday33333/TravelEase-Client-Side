@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router';
+import { useSpring, animated } from '@react-spring/web'; // 👈 react-spring import
 
 const AllVehicles = () => {
   const data = useLoaderData();
@@ -85,32 +86,43 @@ const AllVehicles = () => {
 
       {/* ---------- Vehicles Grid ---------- */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
-        {vehicles.map((vehicle) => (
-          <div
-            key={vehicle._id}
-            className=" rounded-lg shadow-2xl hover:shadow-lg transition p-4 flex flex-col"
-          >
-            <img
-              src={vehicle.coverImage}
-              alt={vehicle.vehicleName}
-              className="w-full h-48 object-cover rounded-md mb-4"
-            />
-            <h3 className="text-xl font-semibold mb-2">
-              {vehicle.vehicleName}
-            </h3>
-            <p className="text-gray-600 mb-1">Category: {vehicle.category}</p>
-            <p className="text-gray-600 mb-1">Location: {vehicle.location}</p>
-            <p className="text-gray-600 mb-1">
-              Price/Day: ${vehicle.pricePerDay}
-            </p>
-            <Link
-              to={`/viewdetailspage/${vehicle._id}`}
-              className="mt-auto bg-red-600 text-black  font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
+        {vehicles.map((vehicle, index) => {
+          // 👇 react-spring fade-in + slide-up animation
+          const fadeIn = useSpring({
+            from: { opacity: 0, transform: 'translateY(20px)' },
+            to: { opacity: 1, transform: 'translateY(0px)' },
+            delay: index * 100, // staggered effect
+            config: { tension: 200, friction: 20 },
+          });
+
+          return (
+            <animated.div
+              key={vehicle._id}
+              style={fadeIn}
+              className="rounded-lg shadow-2xl hover:shadow-lg transition p-4 flex flex-col"
             >
-              View Details
-            </Link>
-          </div>
-        ))}
+              <img
+                src={vehicle.coverImage}
+                alt={vehicle.vehicleName}
+                className="w-full h-48 object-cover rounded-md mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">
+                {vehicle.vehicleName}
+              </h3>
+              <p className="text-gray-600 mb-1">Category: {vehicle.category}</p>
+              <p className="text-gray-600 mb-1">Location: {vehicle.location}</p>
+              <p className="text-gray-600 mb-1">
+                Price/Day: ${vehicle.pricePerDay}
+              </p>
+              <Link
+                to={`/viewdetailspage/${vehicle._id}`}
+                className="mt-auto bg-red-600 text-black font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
+              >
+                View Details
+              </Link>
+            </animated.div>
+          );
+        })}
       </div>
     </div>
   );

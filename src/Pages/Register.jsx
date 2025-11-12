@@ -1,14 +1,15 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // 👈 added for password toggle
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { motion } from "framer-motion"; // 👈 Added for animation
 
 const Register = () => {
   const { createUser, signInWithgoogle } = useContext(AuthContext);
   const [nameError, setNamerror] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // 👈 added
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSingUp = (e) => {
@@ -19,7 +20,6 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    // Name validation
     if (name.length < 5) {
       setNamerror('Name should be more than 5 characters');
       return;
@@ -27,7 +27,6 @@ const Register = () => {
       setNamerror('');
     }
 
-    // Password validation
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
 
@@ -46,21 +45,14 @@ const Register = () => {
 
     setLoading(true);
 
-    // Firebase create user
     createUser(email, password)
       .then((result) => {
         const user = result.user;
 
-        // Update profile
         import('firebase/auth').then(({ updateProfile }) => {
           updateProfile(user, { displayName: name, photoURL: photo })
             .then(() => {
-              // MongoDB এ save করা
-              const newUser = {
-                name,
-                email,
-                image: photo,
-              };
+              const newUser = { name, email, image: photo };
 
               fetch('https://travelease-server-side.vercel.app/users', {
                 method: 'POST',
@@ -71,7 +63,7 @@ const Register = () => {
                 .then((data) => {
                   console.log('User saved in DB:', data);
                   setLoading(false);
-                  navigate('/'); // Registration successful → home
+                  navigate('/');
                 })
                 .catch((err) => {
                   console.error(err);
@@ -99,7 +91,6 @@ const Register = () => {
           image: result.user.photoURL,
         };
 
-        // Google sign-in user save in MongoDB
         fetch('https://travelease-server-side.vercel.app/users', {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
@@ -108,7 +99,7 @@ const Register = () => {
           .then((res) => res.json())
           .then((data) => {
             console.log('Google user saved in DB:', data);
-            navigate('/'); // Redirect after Google sign-in
+            navigate('/');
           })
           .catch((err) => console.error(err));
       })
@@ -117,7 +108,12 @@ const Register = () => {
 
   return (
     <div className="flex justify-center mx-auto min-h-screen items-center">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl"
+      >
         <h1 className="text-4xl text-center font-bold">Register now!</h1>
         <div className="card-body">
           <form onSubmit={handleSingUp}>
@@ -151,8 +147,6 @@ const Register = () => {
               />
 
               <label className="label">Password</label>
-
-              {/* 👇 Password input with eye toggle */}
               <div className="relative">
                 <input
                   name="password"
@@ -178,7 +172,6 @@ const Register = () => {
                 {loading ? 'Registering...' : 'Register'}
               </button>
 
-              {/* Google Sign In */}
               <button
                 type="button"
                 onClick={handleGoogleSignIn}
@@ -223,7 +216,7 @@ const Register = () => {
             </fieldset>
           </form>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

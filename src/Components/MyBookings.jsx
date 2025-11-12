@@ -1,11 +1,22 @@
 import { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // 👇 AOS init
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+    });
+  }, []);
 
   // Fetch user bookings
   useEffect(() => {
@@ -65,7 +76,7 @@ const MyBookings = () => {
   }
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-6" data-aos="fade-up">
       <h2 className="text-2xl font-bold text-center text-red-600 mb-6">
         My Bookings ({bookings.length})
       </h2>
@@ -76,9 +87,9 @@ const MyBookings = () => {
         <>
           {/* ✅ Large Device - Table View */}
           <div className="hidden md:block overflow-x-auto">
-            <table className="min-w-full  border rounded-lg shadow">
+            <table className="min-w-full border rounded-lg shadow">
               <thead>
-                <tr className=" text-left">
+                <tr className="text-left">
                   <th className="py-3 px-4 border-b">Vehicle</th>
                   <th className="py-3 px-4 border-b">Category</th>
                   <th className="py-3 px-4 border-b">Location</th>
@@ -89,8 +100,13 @@ const MyBookings = () => {
                 </tr>
               </thead>
               <tbody>
-                {bookings.map((booking) => (
-                  <tr key={booking._id} className="">
+                {bookings.map((booking, index) => (
+                  <tr
+                    key={booking._id}
+                    className=""
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100} // stagger effect
+                  >
                     <td className="py-3 px-4 border-b flex items-center gap-3">
                       <img
                         src={booking.vehicleImage}
@@ -119,7 +135,7 @@ const MyBookings = () => {
                     <td className="py-3 px-4 border-b text-center">
                       <button
                         onClick={() => handleDelete(booking._id)}
-                        className="btn btn-sm bg-red-600 text-black hover:bg-black hover:text-white transition duration-300 font-semibold shadow-md "
+                        className="btn btn-sm bg-red-600 text-black hover:bg-black hover:text-white transition duration-300 font-semibold shadow-md"
                       >
                         Delete
                       </button>
@@ -132,10 +148,12 @@ const MyBookings = () => {
 
           {/* ✅ Small Device - Card/Grid View */}
           <div className="grid grid-cols-1 gap-4 md:hidden">
-            {bookings.map((booking) => (
+            {bookings.map((booking, index) => (
               <div
                 key={booking._id}
-                className="p-4  border rounded-xl shadow-md hover:shadow-lg transition"
+                className="p-4 border rounded-xl shadow-md hover:shadow-lg transition"
+                data-aos="fade-up"
+                data-aos-delay={index * 100} // stagger effect
               >
                 <div className="flex items-center gap-4 mb-3">
                   <img
@@ -161,13 +179,13 @@ const MyBookings = () => {
                 >
                   🟢 {booking.status || 'Pending'}
                 </p>
-                <p className="text-xs  mt-1">
+                <p className="text-xs mt-1">
                   📅 {new Date(booking.date).toLocaleDateString()}
                 </p>
 
                 <button
                   onClick={() => handleDelete(booking._id)}
-                  className="mt-3 w-full bg-red-600 text-black  hover:bg-black hover:text-white transition duration-300 py-2 rounded-lg text-sm font-semibold"
+                  className="mt-3 w-full bg-red-600 text-black hover:bg-black hover:text-white transition duration-300 py-2 rounded-lg text-sm font-semibold"
                 >
                   Delete
                 </button>

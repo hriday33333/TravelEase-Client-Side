@@ -1,12 +1,23 @@
 import { format } from 'date-fns';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const ViewDetailsPage = () => {
   const data = useLoaderData();
   const { user } = useContext(AuthContext);
+
+  // 👇 AOS init
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+    });
+  }, []);
 
   const formattedDate = format(new Date(data.createdAt), 'dd MMMM yyyy');
 
@@ -49,10 +60,19 @@ const ViewDetailsPage = () => {
   };
 
   return (
-    <div className="min-h-screen  flex justify-center items-start p-6 pt-12">
-      <div className="max-w-3xl w-full  backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-blue-100">
+    <div
+      className="min-h-screen flex justify-center items-start p-6 pt-12"
+      data-aos="fade-up" // 👈 container animation
+    >
+      <div
+        className="max-w-3xl w-full backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-blue-100"
+        data-aos="zoom-in" // 👈 card animation
+      >
         {/* Vehicle Image */}
-        <div className="w-full h-72 overflow-hidden rounded-xl shadow-md mb-6">
+        <div
+          className="w-full h-72 overflow-hidden rounded-xl shadow-md mb-6"
+          data-aos="fade-up"
+        >
           <img
             src={data.coverImage}
             alt={data.vehicleName}
@@ -61,10 +81,10 @@ const ViewDetailsPage = () => {
         </div>
 
         {/* Vehicle Title */}
-        <h1 className="text-3xl font-bold mb-2 text-center">
+        <h1 className="text-3xl font-bold mb-2 text-center" data-aos="fade-right">
           {data.vehicleName}
         </h1>
-        <p className="text-gray-500 text-center mb-6 italic">
+        <p className="text-gray-500 text-center mb-6 italic" data-aos="fade-left">
           {data.category} • {data.location}
         </p>
 
@@ -89,16 +109,19 @@ const ViewDetailsPage = () => {
         </div>
 
         {/* Description */}
-        <div className=" border border-gray-200 rounded-xl p-5 shadow-inner mb-8">
-          <h2 className="text-xl font-semibold  mb-2">Description</h2>
-          <p className=" leading-relaxed">{data.description}</p>
+        <div
+          className="border border-gray-200 rounded-xl p-5 shadow-inner mb-8"
+          data-aos="fade-up"
+        >
+          <h2 className="text-xl font-semibold mb-2">Description</h2>
+          <p className="leading-relaxed">{data.description}</p>
         </div>
 
         {/* Book Now Button */}
-        <div className="flex justify-center">
+        <div className="flex justify-center" data-aos="fade-up">
           <button
             onClick={handleBooking}
-            className="px-8 py-3 bg-red-600 text-black  hover:bg-black hover:text-white transition duration-300 font-semibold rounded-full shadow-md  transform hover:scale-105"
+            className="px-8 py-3 bg-red-600 text-black hover:bg-black hover:text-white transition duration-300 font-semibold rounded-full shadow-md transform hover:scale-105"
           >
             Book Now
           </button>
@@ -110,8 +133,11 @@ const ViewDetailsPage = () => {
 
 // Reusable InfoCard
 const InfoCard = ({ label, value, valueColor = '' }) => (
-  <div className="p-4  rounded-xl border border-blue-100 hover:shadow-md transition-shadow">
-    <p className="">{label}</p>
+  <div
+    className="p-4 rounded-xl border border-blue-100 hover:shadow-md transition-shadow"
+    data-aos="fade-up"
+  >
+    <p>{label}</p>
     <h3 className={`text-lg font-semibold ${valueColor}`}>{value}</h3>
   </div>
 );

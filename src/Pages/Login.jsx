@@ -1,16 +1,27 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // 👈 eye icons import
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Login = () => {
   const { loginUser, signInWithgoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // 👈 for toggling password visibility
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/"; // redirect after login
+  const from = location.state?.from?.pathname || "/";
+
+  // 👇 AOS init
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -47,13 +58,25 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center mx-auto min-h-screen items-center">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-        <h1 className="text-4xl text-center font-bold">Login now!</h1>
+    <div
+      className="flex justify-center mx-auto min-h-screen items-center"
+      data-aos="fade-up" // 👈 container animation
+    >
+      <div
+        className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl"
+        data-aos="zoom-in" // 👈 card animation
+      >
+        <h1 className="text-4xl text-center font-bold" data-aos="fade-right">
+          Login now!
+        </h1>
         <div className="card-body">
           <form onSubmit={handleLogin}>
             <fieldset className="fieldset">
-              {error && <p className="text-red-500 text-xs mb-2">{error}</p>}
+              {error && (
+                <p className="text-red-500 text-xs mb-2" data-aos="fade-left">
+                  {error}
+                </p>
+              )}
               <label className="label">Email</label>
               <input
                 name="email"
@@ -61,12 +84,11 @@ const Login = () => {
                 className="input w-full"
                 placeholder="Email"
                 required
+                data-aos="fade-up"
               />
 
               <label className="label">Password</label>
-
-              {/* 👇 Password field with eye icon */}
-              <div className="relative">
+              <div className="relative" data-aos="fade-up">
                 <input
                   name="password"
                   type={showPassword ? "text" : "password"}
@@ -83,11 +105,11 @@ const Login = () => {
                 </button>
               </div>
 
-              <div>
+              <div data-aos="fade-up">
                 <a className="link link-hover">Forgot password?</a>
               </div>
 
-              <button className="btn btn-neutral mt-4" disabled={loading}>
+              <button className="btn btn-neutral mt-4" disabled={loading} data-aos="fade-up">
                 {loading ? "Logging in..." : "Login"}
               </button>
 
@@ -96,6 +118,7 @@ const Login = () => {
                 type="button"
                 onClick={handleGoogleSignIn}
                 className="btn bg-white text-black border-[#e5e5e5] mt-2"
+                data-aos="fade-up"
               >
                 <svg
                   aria-label="Google logo"
@@ -128,7 +151,7 @@ const Login = () => {
               </button>
 
               {/* Register link */}
-              <p className="font-semibold text-center pt-4">
+              <p className="font-semibold text-center pt-4" data-aos="fade-up">
                 Don't have an account?{" "}
                 <Link
                   to="/register"
