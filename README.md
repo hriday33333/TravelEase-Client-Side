@@ -2,29 +2,29 @@
 
 **Live Site URL:** [https://friendly-platypus-46a68b.netlify.app/](https://friendly-platypus-46a68b.netlify.app/)
 
-TravelEase হলো একটি আধুনিক ভ্রমণ ব্যবস্থাপনা ওয়েবসাইট, যেখানে ব্যবহারকারীরা সহজেই গাড়ি বা ট্রাভেল মডেল ব্রাউজ করতে, বুক করতে এবং অভিজ্ঞতা শেয়ার করতে পারে।
+**TravelEase** is a modern travel management website where users can easily browse different vehicles or travel models, make bookings, and share their experiences.
 
 ---
 
 ## ✨ Features
 
-- 🧭 **Dynamic Travel Models:** ব্যবহারকারীরা বিভিন্ন গাড়ি বা ট্রাভেল মডেল দেখতে ও নির্বাচন করতে পারে।
-- 🔐 **Authentication System:** Firebase দিয়ে লগইন / রেজিস্ট্রেশন এবং Google Sign-In সাপোর্ট।
-- 💾 **Database Integration:** MongoDB এর মাধ্যমে ডেটা সংরক্ষণ ও প্রদর্শন।
-- 💬 **Responsive UI:** React এবং Tailwind CSS ব্যবহার করে সব ডিভাইসে সুন্দরভাবে দেখা যায়।
-- 🚗 **Private Routes:** শুধুমাত্র লগইন করা ব্যবহারকারীরা নির্দিষ্ট পেজে অ্যাক্সেস করতে পারে।
-- 🌐 **Deployment:** সম্পূর্ণ ওয়েবসাইট Netlify (client) এবং Vercel (server) এ ডিপ্লয় করা।
+- 🧭 **Dynamic Travel Models:** Users can explore and select from a variety of cars and travel models.
+- 🔐 **Authentication System:** Login and registration system powered by Firebase, including Google Sign-In support.
+- 💾 **Database Integration:** Data is stored and retrieved seamlessly using MongoDB.
+- 💬 **Responsive UI:** Fully responsive design built with React and Tailwind CSS, optimized for all devices.
+- 🚗 **Private Routes:** Certain pages are accessible only to logged-in users for better security and personalization.
+- 🌐 **Deployment:** The complete project is deployed on **Netlify (Client)** and **Vercel (Server)**.
 
 ---
 
 ## 🧰 Technologies Used
 
-- React.js
-- Tailwind CSS
-- Firebase Authentication
-- MongoDB + Express.js
-- Netlify / Vercel Deployment
+- **React.js**
+- **Tailwind CSS**
+- **Firebase Authentication**
+- **MongoDB + Express.js**
+- **Netlify / Vercel Deployment**
 
 ---
 
-> © 2025 TravelEase — All rights reserved.
+> © 2025 **TravelEase** — All rights reserved.
