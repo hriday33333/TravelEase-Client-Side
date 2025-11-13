@@ -1,16 +1,15 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { format } from 'date-fns';
 import { useContext, useEffect } from 'react';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const ViewDetailsPage = () => {
   const data = useLoaderData();
   const { user } = useContext(AuthContext);
 
-  // 👇 AOS init
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -62,13 +61,13 @@ const ViewDetailsPage = () => {
   return (
     <div
       className="min-h-screen flex justify-center items-start p-6 pt-12"
-      data-aos="fade-up" // 👈 container animation
+      data-aos="fade-up"
     >
       <div
         className="max-w-3xl w-full backdrop-blur-md shadow-2xl rounded-2xl p-8 border border-blue-100"
-        data-aos="zoom-in" // 👈 card animation
+        data-aos="zoom-in"
       >
-        {/* Vehicle Image */}
+        
         <div
           className="w-full h-72 overflow-hidden rounded-xl shadow-md mb-6"
           data-aos="fade-up"
@@ -80,15 +79,19 @@ const ViewDetailsPage = () => {
           />
         </div>
 
-        {/* Vehicle Title */}
-        <h1 className="text-3xl font-bold mb-2 text-center" data-aos="fade-right">
+        <h1
+          className="text-3xl font-bold mb-2 text-center"
+          data-aos="fade-right"
+        >
           {data.vehicleName}
         </h1>
-        <p className="text-gray-500 text-center mb-6 italic" data-aos="fade-left">
+        <p
+          className="text-gray-500 text-center mb-6 italic"
+          data-aos="fade-left"
+        >
           {data.category} • {data.location}
         </p>
 
-        {/* Vehicle Details Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
           <InfoCard label="Owner" value={data.owner} />
           <InfoCard label="Email" value={data.userEmail} />
@@ -108,7 +111,6 @@ const ViewDetailsPage = () => {
           <InfoCard label="Added On" value={formattedDate} />
         </div>
 
-        {/* Description */}
         <div
           className="border border-gray-200 rounded-xl p-5 shadow-inner mb-8"
           data-aos="fade-up"
@@ -117,7 +119,6 @@ const ViewDetailsPage = () => {
           <p className="leading-relaxed">{data.description}</p>
         </div>
 
-        {/* Book Now Button */}
         <div className="flex justify-center" data-aos="fade-up">
           <button
             onClick={handleBooking}
@@ -131,7 +132,6 @@ const ViewDetailsPage = () => {
   );
 };
 
-// Reusable InfoCard
 const InfoCard = ({ label, value, valueColor = '' }) => (
   <div
     className="p-4 rounded-xl border border-blue-100 hover:shadow-md transition-shadow"

@@ -11,7 +11,6 @@ const AllVehicles = () => {
     sortBy: '',
   });
 
-  // Handle Filter & Sort Change
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     const newFilters = { ...filters, [name]: value };
@@ -19,21 +18,19 @@ const AllVehicles = () => {
 
     let filteredData = [...data];
 
-    // Filter by category
     if (newFilters.category) {
       filteredData = filteredData.filter(
         (v) => v.category.toLowerCase() === newFilters.category.toLowerCase()
       );
     }
 
-    // Filter by location
     if (newFilters.location) {
       filteredData = filteredData.filter((v) =>
         v.location.toLowerCase().includes(newFilters.location.toLowerCase())
       );
     }
 
-    // Sort by price
+
     if (newFilters.sortBy === 'lowToHigh') {
       filteredData.sort((a, b) => a.pricePerDay - b.pricePerDay);
     } else if (newFilters.sortBy === 'highToLow') {
@@ -51,9 +48,9 @@ const AllVehicles = () => {
       >
         Add New Vehicle
       </h2>
-      {/* ---------- Filter Section ---------- */}
+
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
-        {/* Category Filter */}
+
         <select
           name="category"
           onChange={handleFilterChange}
@@ -69,7 +66,7 @@ const AllVehicles = () => {
           <option value="Luxury Sedan">Luxury Sedan</option>
         </select>
 
-        {/* Location Filter */}
+
         <input
           type="text"
           name="location"
@@ -78,7 +75,7 @@ const AllVehicles = () => {
           className="input input-bordered w-full sm:w-1/4"
         />
 
-        {/* Sort by Price */}
+
         <select
           name="sortBy"
           onChange={handleFilterChange}
@@ -90,7 +87,7 @@ const AllVehicles = () => {
         </select>
       </div>
 
-      {/* ---------- Vehicles Grid ---------- */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
         {vehicles.map((vehicle, index) => {
           // 👇 react-spring fade-in + slide-up animation

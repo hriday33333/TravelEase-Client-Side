@@ -6,7 +6,7 @@ import { FaSquareXTwitter } from 'react-icons/fa6';
 import logo from '../assets/logo3.png';
 
 const Footer = () => {
-  // 👇 AOS init
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -16,9 +16,9 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="border-t py-8 mt-12" data-aos="fade-up">
+    <footer className="border-t py-8  mt-12" data-aos="fade-up">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-        {/* Website Info */}
+
         <div
           className="mb-6 md:mb-0 text-center md:text-left"
           data-aos="fade-right"
@@ -36,7 +36,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Social Links */}
+      
         <div className="flex space-x-4" data-aos="fade-left">
           <a
             href="https://facebook.com"

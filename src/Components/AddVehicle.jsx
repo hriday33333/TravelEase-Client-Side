@@ -6,7 +6,7 @@ import { AuthContext } from '../Context/AuthContext';
 const AddVehicle = () => {
   const { user } = useContext(AuthContext);
 
-  // 🔹 AOS Initialize
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -64,7 +64,7 @@ const AddVehicle = () => {
         className="grid grid-cols-1 md:grid-cols-2 gap-4"
         data-aos="fade-up"
       >
-        {/* Vehicle Name */}
+
         <div data-aos="fade-right">
           <label className="block ">Vehicle Name</label>
           <input
@@ -75,7 +75,7 @@ const AddVehicle = () => {
           />
         </div>
 
-        {/* Owner Name */}
+
         <div data-aos="fade-left">
           <label className="block ">Owner Name</label>
           <input
@@ -86,7 +86,7 @@ const AddVehicle = () => {
           />
         </div>
 
-        {/* Category */}
+
         <div data-aos="fade-right">
           <label className="block ">Category</label>
           <select
@@ -103,7 +103,7 @@ const AddVehicle = () => {
           </select>
         </div>
 
-        {/* Price Per Day */}
+
         <div data-aos="fade-left">
           <label className="block ">Price Per Day ($)</label>
           <input
@@ -114,7 +114,7 @@ const AddVehicle = () => {
           />
         </div>
 
-        {/* Location */}
+
         <div data-aos="fade-right">
           <label className="block ">Location</label>
           <input
@@ -125,7 +125,7 @@ const AddVehicle = () => {
           />
         </div>
 
-        {/* Availability */}
+
         <div data-aos="fade-left">
           <label className="block ">Availability</label>
           <select
@@ -137,7 +137,7 @@ const AddVehicle = () => {
           </select>
         </div>
 
-        {/* Description */}
+
         <div className="md:col-span-2" data-aos="fade-up">
           <label className="block ">Description</label>
           <textarea
@@ -147,7 +147,6 @@ const AddVehicle = () => {
           ></textarea>
         </div>
 
-        {/* Cover Image */}
         <div className="md:col-span-2" data-aos="fade-up">
           <label className="block ">Cover Image URL</label>
           <input
@@ -158,7 +157,7 @@ const AddVehicle = () => {
           />
         </div>
 
-        {/* User Email */}
+
         <div className="md:col-span-2" data-aos="fade-up">
           <label className="block ">User Email</label>
           <input
@@ -169,7 +168,6 @@ const AddVehicle = () => {
           />
         </div>
 
-        {/* Submit Button */}
         <div className="md:col-span-2 text-center mt-4" data-aos="zoom-in-up">
           <button
             type="submit"

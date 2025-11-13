@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { motion } from "framer-motion"; // 👈 Added for animation
+import { motion } from "framer-motion"; 
 
 const Register = () => {
   const { createUser, signInWithgoogle } = useContext(AuthContext);

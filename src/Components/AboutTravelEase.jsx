@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const AboutTravelEase = () => {
   return (
-    <section className="relative  mt-20 lg:mt-30 overflow-hidden py-20 px-6 md:px-16 lg:px-32 text-center">
+    <section className="relative mt-20 lg:mt-30 overflow-hidden py-20 px-6 md:px-16 lg:px-32 text-center">
       {/* Main motion wrapper for whole content */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -11,7 +11,7 @@ const AboutTravelEase = () => {
         viewport={{ once: true }}
         className="relative z-10 max-w-3xl mx-auto"
       >
-        {/* Title Animation */}
+
         <motion.h1
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -21,7 +21,7 @@ const AboutTravelEase = () => {
           <span className="text-red-600">About</span> TravelEase
         </motion.h1>
 
-        {/* Paragraphs Animation */}
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ const AboutTravelEase = () => {
           smart way. Your adventure begins here!
         </motion.p>
 
-        {/* Button Animation */}
+       
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}

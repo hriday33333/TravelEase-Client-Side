@@ -1,3 +1,4 @@
+import AboutSection from './AboutSection';
 import AboutTravelEase from './AboutTravelEase';
 import Banner from './Banner';
 import BookingSection from './BookingSection';
@@ -15,7 +16,7 @@ const Home = () => {
       <ThreeDCardSection></ThreeDCardSection>
       <TopCategories></TopCategories>
       <BookingSection></BookingSection>
-
+      <AboutSection></AboutSection>
       <AboutTravelEase></AboutTravelEase>
     </div>
   );

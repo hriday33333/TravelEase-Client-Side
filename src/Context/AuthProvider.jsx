@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     loginUser,
     signInWithgoogle,
-    logout, // ✅ sign out ফাংশন যোগ করা হলো
+    logout, 
     user,
     loading,
   };

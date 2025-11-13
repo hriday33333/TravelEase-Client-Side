@@ -9,7 +9,7 @@ const MyBookings = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 👇 AOS init
+ 
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -18,7 +18,7 @@ const MyBookings = () => {
     });
   }, []);
 
-  // Fetch user bookings
+
   useEffect(() => {
     if (user?.email) {
       fetch(
@@ -36,7 +36,7 @@ const MyBookings = () => {
     }
   }, [user]);
 
-  // ✅ Delete booking function
+
   const handleDelete = (id) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -105,7 +105,7 @@ const MyBookings = () => {
                     key={booking._id}
                     className=""
                     data-aos="fade-up"
-                    data-aos-delay={index * 100} // stagger effect
+                    data-aos-delay={index * 100}
                   >
                     <td className="py-3 px-4 border-b flex items-center gap-3">
                       <img
@@ -146,14 +146,14 @@ const MyBookings = () => {
             </table>
           </div>
 
-          {/* ✅ Small Device - Card/Grid View */}
+
           <div className="grid grid-cols-1 gap-4 md:hidden">
             {bookings.map((booking, index) => (
               <div
                 key={booking._id}
                 className="p-4 border rounded-xl shadow-md hover:shadow-lg transition"
                 data-aos="fade-up"
-                data-aos-delay={index * 100} // stagger effect
+                data-aos-delay={index * 100}
               >
                 <div className="flex items-center gap-4 mb-3">
                   <img

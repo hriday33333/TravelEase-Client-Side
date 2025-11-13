@@ -5,10 +5,10 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const UpdatePage = () => {
-  const vehicle = useLoaderData(); // loader থেকে data
+  const vehicle = useLoaderData();
   const navigate = useNavigate();
 
-  // 👇 AOS init
+  
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -17,7 +17,7 @@ const UpdatePage = () => {
     });
   }, []);
 
-  // Form state initialize
+
   const [formData, setFormData] = useState({
     vehicleName: vehicle.vehicleName,
     owner: vehicle.owner,
@@ -30,13 +30,12 @@ const UpdatePage = () => {
     coverImage: vehicle.coverImage,
   });
 
-  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle form submit
+
   const handleUpdate = (e) => {
     e.preventDefault();
     fetch(`https://travelease-server-side.vercel.app/models/${vehicle._id}`, {

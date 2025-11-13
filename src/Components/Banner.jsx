@@ -13,7 +13,6 @@ import 'aos/dist/aos.css';
 const Banner = () => {
   const [images, setImages] = useState([]);
 
-  // 👇 AOS init
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -26,7 +25,7 @@ const Banner = () => {
     fetch('https://travelease-server-side.vercel.app/models')
       .then((res) => res.json())
       .then((data) => {
-        // শুধু coverImage বের করা
+
         const imgs = data.map((item) => item.coverImage);
         setImages(imgs);
       })
@@ -36,9 +35,9 @@ const Banner = () => {
   return (
     <div
       className="relative w-[90%] mx-auto my-10 rounded-xl overflow-hidden mt-20 lg:mt-32"
-      data-aos="fade-up" // 👈 AOS animation
+      data-aos="fade-up"
     >
-      {/* 🖼️ Swiper Slider */}
+
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -71,7 +70,7 @@ const Banner = () => {
         )}
       </Swiper>
 
-      {/* 🎯 Static Center Button */}
+
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50" data-aos="zoom-in">
         <Link to="/allvehicles">
           <Tooltip></Tooltip>

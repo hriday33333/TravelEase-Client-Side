@@ -2,7 +2,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2'; // ✅ SweetAlert2 import
+import Swal from 'sweetalert2'; 
 import { AuthContext } from '../Context/AuthContext';
 
 const MyVehicles = () => {
@@ -10,7 +10,7 @@ const MyVehicles = () => {
   const [vehicles, setVehicles] = useState([]);
   const navigate = useNavigate();
 
-  // 👇 AOS init
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -19,7 +19,7 @@ const MyVehicles = () => {
     });
   }, []);
 
-  // Fetch vehicles added by logged-in user
+
   useEffect(() => {
     if (user?.email) {
       fetch(
@@ -31,7 +31,7 @@ const MyVehicles = () => {
     }
   }, [user]);
 
-  // Handle Delete with SweetAlert2
+
   const handleDelete = (id) => {
     Swal.fire({
       title: 'Are you sure?',

@@ -60,11 +60,11 @@ const Login = () => {
   return (
     <div
       className="flex justify-center mx-auto min-h-screen items-center"
-      data-aos="fade-up" // 👈 container animation
+      data-aos="fade-up" 
     >
       <div
         className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl"
-        data-aos="zoom-in" // 👈 card animation
+        data-aos="zoom-in"
       >
         <h1 className="text-4xl text-center font-bold" data-aos="fade-right">
           Login now!

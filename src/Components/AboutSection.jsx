@@ -8,55 +8,51 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section className="py-10 md:py-16 flex flex-col md:flex-row items-center md:items-start justify-between w-[95%] md:w-[90%] mx-auto gap-10 mt-40">
-      {/* Left Side - Overlapping Images */}
-      <div className="relative w-full md:w-1/2 flex justify-center md:justify-start mb-5 md:mb-0">
+    <section className="hidden md:flex py-16  flex-col md:flex-row items-center justify-between w-[90%] mx-auto mt-30 ">
+      <div className="relative w-full md:w-1/2 flex justify-center mb-10 md:mb-0">
         <img
-          src="https://i.ibb.co.com/Wvs5NFZg/img2.webp"
+          src="https://i.ibb.co.com/7JTNFLdt/img1.jpg"
           alt="vehicle"
-          className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-2xl shadow-lg absolute md:static top-0 left-5 md:left-10 z-30 border-4 border-white"
+          className="w-64 h-64 object-cover rounded-2xl shadow-lg absolute top-0 left-10 z-30 border-4"
           data-aos="fade-right"
         />
         <img
-          src="https://i.ibb.co.com/chNjbFqr/img3.webp"
+          src="https://i.ibb.co.com/Wvs5NFZg/img2.webp"
           alt="travel"
-          className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-2xl shadow-md absolute md:static bottom-0 right-8 md:right-16 z-20 border-4 border-white mt-48 md:mt-0"
+          className="w-52 h-52 object-cover rounded-2xl shadow-md absolute bottom-0 right-16 z-20 border-4 "
           data-aos="fade-up"
         />
         <img
-          src="https://i.ibb.co.com/7JTNFLdt/img1.jpg"
+          src="https://i.ibb.co.com/chNjbFqr/img3.webp"
           alt="car"
-          className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-2xl shadow absolute md:static bottom-8 left-2 md:left-0 z-10 border-4 border-white mt-40 md:mt-0"
+          className="w-40 h-40 object-cover rounded-2xl shadow absolute bottom-10 left-0 z-10 border-4 "
           data-aos="fade-left"
         />
       </div>
 
-      {/* Right Side - Text */}
       <div
-        className="md:w-1/2 text-center md:text-left space-y-4 md:space-y-5 px-4 md:px-0  mt-40"
+        className="md:w-1/2 text-center md:text-left space-y-5"
         data-aos="fade-left"
       >
-        <h3 className="text-red-500 font-semibold uppercase text-sm md:text-base">
-          About Us
-        </h3>
-        <h2 className="text-2xl md:text-4xl font-bold  leading-snug">
+        <h3 className="text-red-500 font-semibold uppercase">About Us</h3>
+        <h2 className="text-4xl font-bold ">
           Your Comfort, <span className="text-red-600">Our Priority</span>
         </h2>
-        <p className=" leading-relaxed text-sm md:text-base">
+        <p className="leading-relaxed">
           We aim to provide the best travel experience possible. Whether you’re
           booking a vehicle or exploring destinations, we ensure comfort,
           reliability, and satisfaction.
         </p>
-        <ul className="space-y-2 text-sm md:text-base">
+        <ul className="space-y-2 ">
           <li>✅ Safe and reliable vehicles</li>
           <li>✅ 24/7 customer support</li>
           <li>✅ Affordable pricing plans</li>
           <li>✅ Flexible booking options</li>
           <li>✅ 100% satisfaction guaranteed</li>
         </ul>
-        <p className="text-xs md:text-sm mt-5">
+        <p className="text-sm  mt-5">
           📞 Contact us:{' '}
-          <span className="text-red-600 font-semibold">+8801613577742</span>
+          <span className="text-red-600 font-semibold">+88016135-77742</span>
         </p>
       </div>
     </section>

@@ -7,12 +7,12 @@ import { AuthContext } from '../Context/AuthContext';
 const BookingSection = ({ vehicleId }) => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
-  const [status, setStatus] = useState(''); // Interested or Booked
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
 
-    // Fetch bookings for this vehicle
+
     fetch(`https://travelease-server-side.vercel.app/bookings?vehicleId=${vehicleId}`)
       .then((res) => res.json())
       .then((data) => setBookings(data))
@@ -25,7 +25,6 @@ const BookingSection = ({ vehicleId }) => {
       return;
     }
 
-    // Prevent multiple bookings by same user
     const existing = bookings.find((b) => b.userEmail === user.email);
     if (existing) {
       Swal.fire('Already Marked', 'You have already booked/interested', 'info');
