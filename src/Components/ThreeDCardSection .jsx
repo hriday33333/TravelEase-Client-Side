@@ -9,7 +9,7 @@ const ThreeDCardSection = () => {
     AOS.init({ duration: 1000 });
     fetch("https://travelease-server-side.vercel.app/models")
       .then((res) => res.json())
-      .then((data) => setVehicles(data.slice(0, 3))) // শুধু প্রথম ৩টা show করবে
+      .then((data) => setVehicles(data.slice(0, 3))) 
       .catch((err) => console.error(err));
   }, []);
 
@@ -19,7 +19,7 @@ const ThreeDCardSection = () => {
         data-aos="fade-up"
         className="text-3xl font-bold mb-10 text-red-600"
       >
-        🚘 Featured 3D Vehicles
+        🚘 Featured Vehicles
       </h2>
 
       <div className="grid gap-10 md:grid-cols-3 place-items-center">
