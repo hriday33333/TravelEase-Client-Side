@@ -58,7 +58,7 @@ const Navbar = () => {
   );
 
   return (
-    <div>
+    <>
       <div className="navbar glass shadow fixed top-0 left-0 mx-auto z-50 backdrop-blur-md bg-white/30 border-b border-white/20">
         <div className="navbar-start">
           <img
