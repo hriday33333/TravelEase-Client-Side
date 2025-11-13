@@ -1,6 +1,6 @@
 # 🌍 TravelEase
 
-**Live Site URL:** [https://travelease.netlify.app](https://travelease.netlify.app)
+**Live Site URL:** [https://friendly-platypus-46a68b.netlify.app/](https://friendly-platypus-46a68b.netlify.app/)
 
 TravelEase হলো একটি আধুনিক ভ্রমণ ব্যবস্থাপনা ওয়েবসাইট, যেখানে ব্যবহারকারীরা সহজেই গাড়ি বা ট্রাভেল মডেল ব্রাউজ করতে, বুক করতে এবং অভিজ্ঞতা শেয়ার করতে পারে।
 
