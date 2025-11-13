@@ -5,7 +5,7 @@ import Navbar from '../Components/Navbar';
 const Root = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <nav>
+      <nav className='mx-auto'>
         <Navbar></Navbar>
       </nav>
 
