@@ -60,13 +60,13 @@ const Login = () => {
   return (
     <div
       className="flex justify-center mx-auto min-h-screen items-center"
-      data-aos="fade-up" 
+      data-aos="fade-up"
     >
       <div
         className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl"
         data-aos="zoom-in"
       >
-        <h1 className="text-4xl text-center font-bold" data-aos="fade-right">
+        <h1 className="text-4xl text-center text-red-600 font-bold" data-aos="fade-right">
           Login now!
         </h1>
         <div className="card-body">
@@ -109,7 +109,7 @@ const Login = () => {
                 <a className="link link-hover">Forgot password?</a>
               </div>
 
-              <button className="btn btn-neutral mt-4" disabled={loading} data-aos="fade-up">
+              <button className="btn btn-neutral  bg-red-600 text-black font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 mt-4" disabled={loading} data-aos="fade-up">
                 {loading ? "Logging in..." : "Login"}
               </button>
 
@@ -155,9 +155,9 @@ const Login = () => {
                 Don't have an account?{" "}
                 <Link
                   to="/register"
-                  className="text-blue-400 hover:text-blue-700"
+                  className="text-red-600 hover:text-red-900"
                 >
-                  Sign Up
+                  Register
                 </Link>
               </p>
             </fieldset>

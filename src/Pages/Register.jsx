@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 
 const Register = () => {
   const { createUser, signInWithgoogle } = useContext(AuthContext);
@@ -114,7 +114,7 @@ const Register = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl"
       >
-        <h1 className="text-4xl text-center font-bold">Register now!</h1>
+        <h1 className="text-4xl text-center text-red-600 font-bold">Register now!</h1>
         <div className="card-body">
           <form onSubmit={handleSingUp}>
             <fieldset className="fieldset">
@@ -168,7 +168,7 @@ const Register = () => {
                 <p className="text-xs text-error">{passwordError}</p>
               )}
 
-              <button className="btn btn-neutral mt-4" disabled={loading}>
+              <button className="btn btn-neutral  bg-red-600 text-black font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 mt-4" disabled={loading}>
                 {loading ? 'Registering...' : 'Register'}
               </button>
 
@@ -209,7 +209,7 @@ const Register = () => {
 
               <p className="font-semibold text-center pt-4">
                 Already Have an Account?{' '}
-                <Link to="/login" className="text-blue-400 hover:text-blue-700">
+                <Link to="/login" className="text-red-600 hover:text-red-900">
                   Login
                 </Link>
               </p>
