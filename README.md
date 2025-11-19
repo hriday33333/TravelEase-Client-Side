@@ -1,9 +1,7 @@
-
-
 # 🌍 TravelEase
 
 <p align="center">
-  <img src="https://i.ibb.co/your-screenshot.png" alt="TravelEase Screenshot" width="1000" height="250">
+  <img src="https://i.ibb.co.com/7JLQjYKG/Screenshot-2025-11-19-065106.png" alt="TravelEase Screenshot" width="1000" height="250">
 </p>
 
 # 🌍 TravelEase
@@ -58,7 +56,8 @@ The project uses the following libraries and packages:
 ## 💻 Local Setup
 
 1. Clone the repository:
-```bash
+
+````bash
 git clone https://github.com/your-username/TravelEase.git
 
 ## 💻 Local Setup
@@ -99,3 +98,4 @@ Firebase Authentication ব্যবহার করলে .env ফাইলে 
 
 
 > © 2025 **TravelEase** — All rights reserved.
+````
