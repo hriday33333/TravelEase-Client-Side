@@ -4,7 +4,7 @@
   <img src="https://i.ibb.co.com/7JLQjYKG/Screenshot-2025-11-19-065106.png" alt="TravelEase Screenshot" width="1000" height="250">
 </p>
 
-# 🌍 TravelEase
+
 
 **Live Site URL:** [https://friendly-platypus-46a68b.netlify.app/](https://friendly-platypus-46a68b.netlify.app/)
 
