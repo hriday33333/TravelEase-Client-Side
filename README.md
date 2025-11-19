@@ -53,49 +53,41 @@ The project uses the following libraries and packages:
 
 ---
 
-## 💻 Local Setup
+💻 Local Setup
 
-1. Clone the repository:
+Follow these steps to run the project on your local machine:
 
-````bash
+Clone the repository:
+
 git clone https://github.com/your-username/TravelEase.git
 
-## 💻 Local Setup
 
-প্রজেক্টটি আপনার লোকাল মেশিনে রান করতে নিম্নলিখিত ধাপগুলো অনুসরণ করুন:
-
-1. **Repository ক্লোন করুন:**
-```bash
-git clone https://github.com/your-username/TravelEase.git
-
-Project folder-এ যান:
+Navigate to the project folder:
 
 cd TravelEase
 
 
-Dependencies ইনস্টল করুন:
+Install dependencies:
 
 npm install
 
 
-Development server রান করুন:
+Start the development server:
 
 npm run dev
 
 
-Browser-এ অ্যাপ্লিকেশন দেখুন:
+Open the application in your browser:
 
 http://localhost:5173
- এ যান
+
 
 Optional:
 
-নিশ্চিত করুন আপনার লোকাল মেশিনে Node.js (v18+) ইনস্টল আছে।
+Ensure that Node.js (v18+) is installed on your local machine.
 
-MongoDB সার্ভার চলছে কিনা চেক করুন অথবা আপনার server সাথে connection আছে কিনা।
+Make sure your MongoDB server is running or the server connection is properly configured.
 
-Firebase Authentication ব্যবহার করলে .env ফাইলে credentials সঠিকভাবে কনফিগার করা আছে কিনা দেখুন।
+If using Firebase Authentication, ensure the credentials in the .env file are correctly set.
 
-
-> © 2025 **TravelEase** — All rights reserved.
-````
+© 2025 TravelEase — All rights reserved.
