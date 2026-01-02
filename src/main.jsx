@@ -14,10 +14,11 @@ import AuthProvider from './Context/AuthProvider.jsx';
 import './index.css';
 import DashbordLayout from './Layouts/DashbordLayout.jsx';
 import Root from './Layouts/Root.jsx';
-import DashBoardHome from './Pages/DashBoardHome.jsx';
+import DashBoardHome from './Pages/WelcomeScreen.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import PrivateRoute from './Routes/PrivateRoute.jsxPrivateRoute.jsx';
+import WelcomeScreen from './Pages/WelcomeScreen.jsx';
 
 const router = createBrowserRouter([
   {
@@ -102,7 +103,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <DashBoardHome></DashBoardHome>,
+        element:<WelcomeScreen></WelcomeScreen>
       },
     ],
   },
