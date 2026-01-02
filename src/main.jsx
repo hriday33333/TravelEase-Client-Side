@@ -12,7 +12,9 @@ import UpdatePage from './Components/UpdatePage.jsx';
 import ViewDetailsPage from './Components/ViewDetailsPage.jsx';
 import AuthProvider from './Context/AuthProvider.jsx';
 import './index.css';
+import DashbordLayout from './Layouts/DashbordLayout.jsx';
 import Root from './Layouts/Root.jsx';
+import DashBoardHome from './Pages/DashBoardHome.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import PrivateRoute from './Routes/PrivateRoute.jsxPrivateRoute.jsx';
@@ -91,6 +93,16 @@ const router = createBrowserRouter([
       {
         path: '/*',
         element: <ErrorPage></ErrorPage>,
+      },
+    ],
+  },
+  {
+    path: 'dashboard',
+    element: <DashbordLayout></DashbordLayout>,
+    children: [
+      {
+        index: true,
+        element: <DashBoardHome></DashBoardHome>,
       },
     ],
   },
