@@ -2,13 +2,11 @@ import { useEffect } from 'react';
 
 const WelcomeScreen = () => {
   useEffect(() => {
+    // শুধু theme এবং font class যোগ করো, overflow/h-screen এখন wrapper এ
     document.body.classList.add(
       'bg-background-light',
       'dark:bg-background-dark',
       'font-display',
-      'h-screen',
-      'w-full',
-      'overflow-hidden',
       'transition-colors',
       'duration-300'
     );
@@ -19,12 +17,12 @@ const WelcomeScreen = () => {
   }, []);
 
   return (
-    <div className="relative h-full w-full flex flex-col">
+    <div className="relative  w-full flex flex-col overflow-auto">
       {/* Background blobs */}
-      <div className="absolute -top-20 -left-20 w-80 h-80 bg-leaf-dark/10 dark:bg-leaf-dark/30 rounded-full blur-3xl z-0" />
+      <div className="absolute -top-20 -left-20 w-80 h-80 bg-leaf-dark/10 dark:bg-leaf-dark/30 rounded-full blur-3xl z-0 pointer-events-none" />
 
       {/* Top shapes */}
-      <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden z-0">
+      <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden z-0 pointer-events-none">
         <div className="absolute -top-10 -left-10 w-64 h-64 bg-gradient-to-br from-[#1E1B4B] to-[#4C1D95] rounded-br-[100px] rounded-tl-[50px] -rotate-12 shadow-lg animate-float" />
         <div className="absolute top-20 -left-16 w-56 h-56 bg-gradient-to-tr from-[#BE185D] to-[#D946EF] rounded-tr-[100px] rounded-bl-[50px] rotate-45 opacity-80 animate-float-delayed" />
         <div className="absolute top-10 left-20 w-40 h-64 bg-gradient-to-b from-[#2DD4BF] to-[#0EA5E9] rounded-t-full shadow-xl -rotate-[30deg]">
@@ -33,21 +31,13 @@ const WelcomeScreen = () => {
       </div>
 
       {/* Bottom shapes */}
-      <div className="absolute bottom-0 right-0 w-full h-1/3 overflow-hidden z-0">
+      <div className="absolute bottom-0 right-0 w-full h-1/3 overflow-hidden z-0 pointer-events-none">
         <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-gradient-to-tl from-[#5B21B6] to-[#7C3AED] rounded-tl-[120px] rounded-br-[40px] rotate-12 shadow-lg" />
         <div className="absolute bottom-20 -right-12 w-48 h-48 bg-gradient-to-bl from-[#EC4899] to-[#db2777] rounded-full scale-x-50 rotate-45 animate-float" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-end h-full px-8 pb-12 pt-20">
-        {/* Menu button
-        <div className="absolute top-0 right-0 p-6">
-          <button className="p-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur shadow text-gray-800 dark:text-gray-100">
-            <span className="material-icons">menu</span>
-          </button>
-        </div> */}
-
-        {/* Card */}
         <div className="bg-white/70 dark:bg-gray-900/60 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-gray-700/30">
           <span className="text-xs font-bold tracking-widest text-secondary uppercase block mb-2">
             Nature Inspired

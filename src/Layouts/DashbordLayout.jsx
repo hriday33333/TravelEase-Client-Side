@@ -47,15 +47,15 @@ const DashbordLayout = () => {
           {/* Logo + Theme toggle */}
           <div className="flex-1 flex justify-between items-center">
             <Link to="/">
-              <div className=' flex items-center'>
+              <div className='flex items-center'>
                 <img
-                className="md:w-[80px] md:h-[80px] w-[60px] rounded-full"
-                src={logo}
-                alt=""
-              />
-              <h1 className="md:text-2xl text-lg font-bold style-font">
-                TravelEase
-              </h1>
+                  className="md:w-[80px] md:h-[80px] w-[60px] rounded-full"
+                  src={logo}
+                  alt=""
+                />
+                <h1 className="md:text-2xl text-lg font-bold style-font">
+                  TravelEase
+                </h1>
               </div>
             </Link>
 
