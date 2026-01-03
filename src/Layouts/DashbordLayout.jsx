@@ -2,6 +2,16 @@ import { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router';
 import logo from '../assets/logo3.png';
 
+import {
+  FiBookOpen,
+  FiHome,
+  FiMenu,
+  FiPlusSquare,
+  FiSettings,
+  FiTruck,
+  FiUser,
+} from 'react-icons/fi';
+
 const DashbordLayout = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
@@ -19,6 +29,7 @@ const DashbordLayout = () => {
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
 
+      {/* ================= Drawer Content ================= */}
       <div className="drawer-content">
         {/* ================= Navbar ================= */}
         <nav className="navbar w-full bg-base-300 glass">
@@ -26,28 +37,15 @@ const DashbordLayout = () => {
           <label
             htmlFor="my-drawer-4"
             aria-label="open sidebar"
-            className="btn btn-square btn-ghost glass "
+            className="btn btn-square btn-ghost glass"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2"
-              fill="none"
-              stroke="currentColor"
-              className="my-1.5 inline-block size-4 "
-            >
-              <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-              <path d="M9 4v16" />
-              <path d="M14 10l2 2l-2 2" />
-            </svg>
+            <FiMenu className="my-1.5 inline-block size-4" />
           </label>
 
           {/* Logo + Theme toggle */}
           <div className="flex-1 flex justify-between items-center">
             <Link to="/">
-              <div className='flex items-center'>
+              <div className="flex items-center">
                 <img
                   className="md:w-[80px] md:h-[80px] w-[60px] rounded-full"
                   src={logo}
@@ -79,158 +77,78 @@ const DashbordLayout = () => {
         <label
           htmlFor="my-drawer-4"
           aria-label="close sidebar"
-          className="drawer-overlay "
+          className="drawer-overlay"
         ></label>
 
         <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64 glass">
           <ul className="menu w-full grow gap-2">
+            {/* Homepage */}
             <li>
               <Link
                 to="/"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
                 data-tip="Homepage"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4 "
-                >
-                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                </svg>
+                <FiHome className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Homepage</span>
               </Link>
             </li>
 
-
+            {/* All Vehicles */}
             <li>
               <Link
                 to="/dashboard/allvehicles"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
                 data-tip="All Vehicles"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4 "
-                >
-                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                </svg>
+                <FiTruck className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">All Vehicles</span>
               </Link>
             </li>
 
-
-
-
-
+            {/* Add Vehicle */}
             <li>
               <Link
                 to="/dashboard/addvehicle"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
                 data-tip="Add Vehicle"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4 "
-                >
-                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                </svg>
+                <FiPlusSquare className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Add Vehicle</span>
               </Link>
             </li>
 
-
-
+            {/* My Vehicles */}
             <li>
               <Link
                 to="/dashboard/myvehicles"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
                 data-tip="My Vehicles"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4 "
-                >
-                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                </svg>
+                <FiUser className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">My Vehicles</span>
               </Link>
             </li>
 
-
-
-
+            {/* My Bookings */}
             <li>
               <Link
                 to="/dashboard/mybookings"
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
                 data-tip="My Bookings"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4 "
-                >
-                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                </svg>
+                <FiBookOpen className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">My Bookings</span>
               </Link>
             </li>
 
-
-
+            {/* Settings */}
             <li>
               <button
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
                 data-tip="Settings"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  fill="none"
-                  stroke="currentColor"
-                  className="my-1.5 inline-block size-4"
-                >
-                  <path d="M20 7h-9" />
-                  <path d="M14 17H5" />
-                  <circle cx="17" cy="17" r="3" />
-                  <circle cx="7" cy="7" r="3" />
-                </svg>
+                <FiSettings className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Settings</span>
               </button>
             </li>

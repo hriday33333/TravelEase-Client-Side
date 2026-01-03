@@ -40,7 +40,7 @@ const AllVehicles = () => {
     setVehicles(filteredData);
   };
 
-  // ✅ Animation — useSpring → useSprings (map এর বাইরে)
+  // ✅ Animation — useSpring → useSprings
   const springs = useSprings(
     vehicles.length,
     vehicles.map((_, index) => ({
@@ -52,14 +52,31 @@ const AllVehicles = () => {
   );
 
   return (
-    <div className="container mx-auto mt-20 p-4">
+    <div className="relative container mx-auto mt-20 p-4">
+      {/* ================= Top shapes ================= */}
+      <div className="absolute top-0 left-0 w-full h-1/2 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute -top-10 -left-10 w-64 h-64 bg-gradient-to-br from-[#1E1B4B] to-[#4C1D95] rounded-br-[100px] rounded-tl-[50px] -rotate-12 shadow-lg animate-float" />
+        <div className="absolute top-20 -left-16 w-56 h-56 bg-gradient-to-tr from-[#E42127] to-[#E42127] rounded-tr-[100px] rounded-bl-[50px] rotate-45 opacity-80 animate-float-delayed" />
+        <div className="absolute top-10 left-20 w-40 h-64 bg-gradient-to-b from-[#2DD4BF] to-[#0EA5E9] rounded-t-full shadow-xl -rotate-[30deg]">
+          <div className="absolute top-0 left-1/2 w-0.5 h-full bg-white/20 -translate-x-1/2" />
+        </div>
+      </div>
+
+      {/* ================= Bottom shapes ================= */}
+      <div className="absolute bottom-0 right-0 w-full h-1/3 overflow-hidden z-0 pointer-events-none">
+        <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-gradient-to-tl from-[#5B21B6] to-[#7C3AED] rounded-tl-[120px] rounded-br-[40px] rotate-12 shadow-lg" />
+        <div className="absolute bottom-20 -right-12 w-48 h-48 bg-gradient-to-bl from-[#E42127] to-[#E42127] rounded-full scale-x-50 rotate-45 animate-float" />
+      </div>
+
+      {/* ================= Header ================= */}
       <h2
         className="text-2xl font-bold mb-15 text-center text-red-600"
         data-aos="zoom-in"
       >
-        Add New Vehicle
+        All Vehicle
       </h2>
 
+      {/* ================= Filters ================= */}
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
         <select
           name="category"
@@ -95,12 +112,13 @@ const AllVehicles = () => {
         </select>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+      {/* ================= Cards ================= */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 relative z-10">
         {vehicles.map((vehicle, index) => (
           <animated.div
             key={vehicle._id}
             style={springs[index]} // 👈 animation apply
-            className="rounded-lg shadow-2xl hover:shadow-lg transition p-4 flex flex-col border-b border-l"
+            className="bg-white/70 dark:bg-gray-900/60 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-gray-700/30 relative z-10"
           >
             <img
               src={vehicle.coverImage}
@@ -129,7 +147,7 @@ const AllVehicles = () => {
 
             <Link
               to={`/viewdetailspage/${vehicle._id}`}
-              className="mt-auto bg-red-600 text-black font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-2 px-4 rounded text-center"
+              className="mt-4 w-full block bg-red-600 text-black font-semibold shadow-md hover:bg-black hover:text-white transition duration-300 py-3 rounded text-center"
             >
               View Details
             </Link>
