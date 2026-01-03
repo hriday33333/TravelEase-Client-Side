@@ -107,6 +107,110 @@ const DashbordLayout = () => {
               </Link>
             </li>
 
+
+            <li>
+              <Link
+                to="/dashboard/allvehicles"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
+                data-tip="All Vehicles"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  fill="none"
+                  stroke="currentColor"
+                  className="my-1.5 inline-block size-4 "
+                >
+                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                </svg>
+                <span className="is-drawer-close:hidden">All Vehicles</span>
+              </Link>
+            </li>
+
+
+
+
+
+            <li>
+              <Link
+                to="/dashboard/addvehicle"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
+                data-tip="Add Vehicle"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  fill="none"
+                  stroke="currentColor"
+                  className="my-1.5 inline-block size-4 "
+                >
+                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                </svg>
+                <span className="is-drawer-close:hidden">Add Vehicle</span>
+              </Link>
+            </li>
+
+
+
+            <li>
+              <Link
+                to="/dashboard/myvehicles"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
+                data-tip="My Vehicles"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  fill="none"
+                  stroke="currentColor"
+                  className="my-1.5 inline-block size-4 "
+                >
+                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                </svg>
+                <span className="is-drawer-close:hidden">My Vehicles</span>
+              </Link>
+            </li>
+
+
+
+
+            <li>
+              <Link
+                to="/dashboard/mybookings"
+                className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
+                data-tip="My Bookings"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  fill="none"
+                  stroke="currentColor"
+                  className="my-1.5 inline-block size-4 "
+                >
+                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                </svg>
+                <span className="is-drawer-close:hidden">My Bookings</span>
+              </Link>
+            </li>
+
+
+
             <li>
               <button
                 className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"

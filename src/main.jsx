@@ -14,11 +14,10 @@ import AuthProvider from './Context/AuthProvider.jsx';
 import './index.css';
 import DashbordLayout from './Layouts/DashbordLayout.jsx';
 import Root from './Layouts/Root.jsx';
-import DashBoardHome from './Pages/WelcomeScreen.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
-import PrivateRoute from './Routes/PrivateRoute.jsxPrivateRoute.jsx';
 import WelcomeScreen from './Pages/WelcomeScreen.jsx';
+import PrivateRoute from './Routes/PrivateRoute.jsxPrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +29,7 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: '/allvehicles',
+        path: 'allvehicles',
         element: <AllVehicles></AllVehicles>,
         loader: () =>
           fetch('https://travelease-server-side.vercel.app/vehicles'),
@@ -79,14 +78,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      {
-        path: '/mybookings',
-        element: (
-          <PrivateRoute>
-            <MyBookings></MyBookings>
-          </PrivateRoute>
-        ),
-      },
+
       {
         path: 'login',
         element: <Login></Login>,
@@ -103,7 +95,29 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element:<WelcomeScreen></WelcomeScreen>
+        element: <WelcomeScreen></WelcomeScreen>,
+      },
+      {
+        path: 'addvehicle',
+        element: <AddVehicle></AddVehicle>,
+      },
+      {
+        path: 'myvehicles',
+        element: <MyVehicles></MyVehicles>,
+      },
+      {
+        path: 'mybookings',
+        element: (
+          <PrivateRoute>
+            <MyBookings></MyBookings>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'allvehicles',
+        element: <AllVehicles></AllVehicles>,
+        loader: () =>
+          fetch('https://travelease-server-side.vercel.app/vehicles'),
       },
     ],
   },
