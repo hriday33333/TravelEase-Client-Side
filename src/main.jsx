@@ -18,6 +18,8 @@ import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import WelcomeScreen from './Pages/WelcomeScreen.jsx';
 import PrivateRoute from './Routes/PrivateRoute.jsxPrivateRoute.jsx';
+import AboutUs from './Pages/AboutUs.jsx';
+import Contact from './Pages/Contact.jsx';
 
 const router = createBrowserRouter([
   {
@@ -82,6 +84,14 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login></Login>,
+      },
+      {
+        path: 'about-us',
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: 'contact',
+        element:<Contact></Contact> ,
       },
       {
         path: '/*',

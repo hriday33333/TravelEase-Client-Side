@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/logo3.png';
 
 import {
@@ -25,6 +25,9 @@ const DashbordLayout = () => {
     setTheme(checked ? 'dark' : 'light');
   };
 
+  const activeClass =
+    'text-red-600 bg-white/70 dark:bg-gray-900/60 backdrop-blur-md rounded-xl shadow-2xl border border-white/20 dark:border-gray-700/30 relative z-10';
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -33,7 +36,6 @@ const DashbordLayout = () => {
       <div className="drawer-content">
         {/* ================= Navbar ================= */}
         <nav className="navbar w-full bg-base-300 glass">
-          {/* Sidebar toggle */}
           <label
             htmlFor="my-drawer-4"
             aria-label="open sidebar"
@@ -42,7 +44,6 @@ const DashbordLayout = () => {
             <FiMenu className="my-1.5 inline-block size-4" />
           </label>
 
-          {/* Logo + Theme toggle */}
           <div className="flex-1 flex justify-between items-center">
             <Link to="/">
               <div className="flex items-center">
@@ -66,7 +67,6 @@ const DashbordLayout = () => {
           </div>
         </nav>
 
-        {/* ================= Dynamic Page Content ================= */}
         <div className="p-4">
           <Outlet />
         </div>
@@ -74,80 +74,80 @@ const DashbordLayout = () => {
 
       {/* ================= Sidebar ================= */}
       <div className="drawer-side is-drawer-close:overflow-visible">
-        <label
-          htmlFor="my-drawer-4"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
+        <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
 
         <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64 glass">
-          <ul className="menu w-full grow gap-2">
+          <ul className="menu w-full grow gap-2 mt-5">
             {/* Homepage */}
             <li>
-              <Link
+              <NavLink
                 to="/"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
-                data-tip="Homepage"
+                className={({ isActive }) =>
+                  `glass ${isActive ? activeClass : ''}`
+                }
               >
                 <FiHome className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Homepage</span>
-              </Link>
+              </NavLink>
             </li>
 
             {/* All Vehicles */}
-            <li>
-              <Link
+            <li className="mt-10">
+              <NavLink
                 to="/dashboard/allvehicles"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
-                data-tip="All Vehicles"
+                className={({ isActive }) =>
+                  `glass ${isActive ? activeClass : ''}`
+                }
               >
                 <FiTruck className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">All Vehicles</span>
-              </Link>
+              </NavLink>
             </li>
 
             {/* Add Vehicle */}
             <li>
-              <Link
+              <NavLink
                 to="/dashboard/addvehicle"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
-                data-tip="Add Vehicle"
+                className={({ isActive }) =>
+                  `glass ${isActive ? activeClass : ''}`
+                }
               >
                 <FiPlusSquare className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Add Vehicle</span>
-              </Link>
+              </NavLink>
             </li>
 
             {/* My Vehicles */}
             <li>
-              <Link
+              <NavLink
                 to="/dashboard/myvehicles"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
-                data-tip="My Vehicles"
+                className={({ isActive }) =>
+                  `glass ${isActive ? activeClass : ''}`
+                }
               >
                 <FiUser className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">My Vehicles</span>
-              </Link>
+              </NavLink>
             </li>
 
             {/* My Bookings */}
             <li>
-              <Link
+              <NavLink
                 to="/dashboard/mybookings"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
-                data-tip="My Bookings"
+                className={({ isActive }) =>
+                  `glass ${isActive ? activeClass : ''}`
+                }
               >
                 <FiBookOpen className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">My Bookings</span>
-              </Link>
+              </NavLink>
             </li>
+
+            <div className="border-t-2 mt-40"></div>
 
             {/* Settings */}
             <li>
-              <button
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right glass"
-                data-tip="Settings"
-              >
+              <button className="glass">
                 <FiSettings className="my-1.5 inline-block size-4" />
                 <span className="is-drawer-close:hidden">Settings</span>
               </button>
